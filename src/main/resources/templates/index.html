@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="js/popper.min.js"></script>
+    <title>Trang chủ</title>
+</head>
+<body>
+    <header id="header" class="menu-top container-fluid">
+        <div class="row">
+            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="index.html" title="Trang chủ"><img src="img/logo.png" alt="logo"></a></div>
+            <div class="search col-xl-3">
+                <form class="form" >
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="display: inline-block;height: 45px;padding-left: 20px; border-radius: 40px;" id="mysearch">
+                        <div class="input-group-addon" style="margin-left: -50px; z-index: 3; border-radius: 40px; background-color: transparent; border:none; width: 11%">
+                            <button class="btn btn-warning btn-sm" type="submit" style="border-radius: 20px; margin-top: 8px" id="search-btn"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <nav class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-6">
+                <div class="wrap-menu">
+                    <ul class="menu" >
+                        <li class="level_1" ><a href="/dang-ky" title="">Đăng ký</a></li>
+                        <li class="level_1" ><a href="/dang-nhap" title="">Đăng nhập</a></li>
+                        <li class="level_1" ><a href="/lien-he" title="">Liên hệ</a></li>
+                        <li class="level_1" >
+                            <a href="#">
+                                Trang <img src="img/right.png"></a>
+                                <ul class="menu_level_2">
+                                    <li class="level_2"><a href="/bai-viet" title="">Bài viết</a></li>
+                                    <li class="level_2"><a href="/ve-chung-toi" title="">Về chúng tôi</a></li>
+                                </ul>
+                            
+                        </li>
+                        <li class="level_1" ><a href="/khoa-hoc" title="">Khóa học</a></li>
+                        <li class="level_1" ><a href="/" title="">Trang chủ</a></li>
+                    </ul>
+                    <button class="button-menu"> 
+                        <div class="icon"></div>
+                        <div class="icon"></div>
+                        <div class="icon"></div>
+                    </button>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+    <!-- /header -->
+    <!-- slider -->
+    <section class="slider container-fluid" style="background-image: url('img/home5-slider-1.jpg');">
+            <div class="slider-content" >
+                <h1>Chất lượng là trên hết</h1>
+                <p>Chúng tôi luôn cung cấp cho bạn những khóa học bổ ích</p>
+                <button class="btn-slider">Tham gia miễn phí</button>
+            </div>
+    </section>
+    <!-- end slider -->
+    <section class="container">
+        <div class="row">
+            <div class="introduce-page">
+                <div class="row">
+                    <div class="introduce-section col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <img src="img/feature-1.png" alt="">
+                        <h4>Trên 20.000 học viên</h4>
+                    </div>
+                    <div class="introduce-section col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <img src="img/feature-2.png" alt="">
+                        <h4>9+ khóa học dành cho bạn</h4>
+                    </div>
+                    <div class="introduce-section col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                        <img src="img/feature-3.png" alt="">
+                        <h4>Học bất cứ khi nào, bất cứ nơi đâu</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="titlecourse">
+                <h2>Các khóa học được chúng tôi hỗ trợ</h2>
+                <p>Sau đây là nhóm các khóa học chính</p>
+            </div> 
+            <div class="khoi col-xl-4 col-lg-4 col-md-4" th:each="item:${courseCategories}">
+                <div class="ndkhoi">
+                    <a href="#">
+                        <img src="img/10398-1.jpg" alt="">
+                        <div class="maughi"></div>
+                        <div class="hinhvuong"></div>
+                        <div class="mauxam"></div>
+                        <h3 th:text = "${item.name}"></h3>
+                        <p th:text = "${item.description}"></p>
+                    </a>
+                </div>
+            </div>
+ 
+            <div class="button-course">
+                <button class="btn-course"><a href="index.html">Xem tất cả các khóa học</a></button>
+            </div>    
+        </div>
+        <div class="row">
+            <div class="titlecourse">
+                <h2>Các khóa học nổi bật của chúng tôi</h2>
+                <p>Những khóa học có số lượng học viên theo học nhiều nhất và có phản hồi tích cực nhất</p>
+            </div>
+            <div class="course">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="course-element">
+                            <a href="introduce-course.html">
+                            <div class="course-image" style="background-image: url('img/1579509180158.png');">
+                            </div>
+                            <div class="course-content">
+                                <h4>TOEIC Online Premium</h4>
+                                <p>Giáo viên: Đang cập nhật</p>
+                                <p>Khóa học đề cao việc thực hành qua những ví dụ trong thực tế giúp học viên nhanh chóng xây dựng được giao diện website</p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="views"><i class="fa fa-users" aria-hidden="true"></i>999</div>
+                                <div class="course-footer-price">
+                                    <span class="price-old"><strike>2.000.000 đ</strike></span>
+                                    <span class="price-new">4.000.000 đ</span>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-4 col-lg-4 col-md-4" th:each = "item:${courses}">
+                        <div class="course-element">
+                            <a href="introduce-course.html">
+                                <div class="course-image" >
+                             	th:style="'background-image:url(' + ${item.imageToBasee64} + ');'"
+                                </div>
+                                <div class="course-content">
+                                    <h4 th:text = "${item.courseName}"></h4>
+                               
+                                    <p th:text = "${item.shortDescription}"></p>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="views"><i class="fa fa-users" aria-hidden="true"></i>999</div>
+                                    <div class="course-footer-price">
+                                        <span class="price-new">Miễn phí</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>    
+        </div>
+
+<!-- news -->
+        <div class="row">
+            <div class="titlenews">
+                <h2>Các bài viết nổi bật</h2>
+            </div>
+            <div class="news">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="course-element">
+                            <a href="#">
+                                <div class="course-image" style="background-image: url('img/1579509180158.png');">
+                                </div>
+                                <div class="course-content">
+                                    <h4>TOEIC Online Premium</h4>
+                                    <p>Phạm Ích Dương</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="course-element">
+                            <a href="#">
+                                <div class="course-image" style="background-image: url('img/1579509180158.png');">
+                                </div>
+                                <div class="course-content">
+                                    <h4>TOEIC Online Premium</h4>
+                                    <p>Phạm Ích Dương hóa học đề cao việc thực hành qua những ví dụ trong thực tế giúp học viên nhanh chóng xây dựng được giao diện websit</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <div class="course-element">
+                            <a href="#">
+                                <div class="course-image" style="background-image: url('img/1579509180158.png');">
+                                </div>
+                                <div class="course-content">
+                                    <h4>TOEIC Online Premium</h4>
+                                    <p>Phạm Ích Dương hóa học đề cao việc thực hành qua những ví dụ trong thực tế giúp học viên nhanh chóng xây dựng được giao diện websit</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- end news -->
+        
+    </section>
+
+
+    <!-- footer -->
+    <section id="footer">
+        <div class="container">
+          <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+              <h5>Tienganhmienphi</h5>
+              <ul class="list-unstyled quick-links">
+                <li><a href="about-us.html"><i class="fa fa-angle-double-right"></i>Về chúng tôi</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Liên hệ</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Các bài viết</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+              <h5>Hỗ trợ</h5>
+              <ul class="list-unstyled quick-links">
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Facebook Support</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Câu hỏi thường gặp</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+              <h5>Thông tin liên hệ</h5>
+              <ul class="list-unstyled quick-links">
+                <li>Số 19 ngõ 87, Lê Thanh Nghị</li>
+                <li>Hà Nội, Việt Nam</li>
+                <li>0965927109</li>
+                <li>phamichduong041299@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+
+          <hr>  
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+              <p class="h6">Copyright Tienganhmienphi © 2021</p>
+            </div>
+            </hr>
+          </div>  
+        </div>
+    </section>
+    <!-- ./Footer -->
+    <script src="js/common.js"> </script>
+</body>
+</html>

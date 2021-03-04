@@ -1,0 +1,77 @@
+.introduce-course {
+    padding: 40px 0px;
+    background-color: #f7f7f7;
+}
+section.content-course {
+    margin-top: 30px;
+}
+
+h4.title-section {
+    padding: 15px 10px;
+    background: #CCC;
+}
+.title-lecture {
+    display: inline-block;
+    white-space: nowrap;
+    padding-top: 5px;
+    margin: auto 0px;
+    overflow-x: hidden;
+}
+a.lecture {
+    background: #f0f0f0;
+    display: block;
+    padding: 10px 16px;
+    color: black;
+    border: 1px solid white;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.section {
+    margin-bottom: 50px;
+}
+button.btn.btn-preview {
+    background: #25a664;
+    color: white;
+    border-radius: 0px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+a.lecture:hover {
+    background: lightblue;
+}
+section.title-page.container-fluid {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    padding-left: 0px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+section.title-page::before {
+    content: '';
+    top: 0;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    background-image: -webkit-linear-gradient(left, #2441e7 0%, #ff1053 100%);
+    background-image: -o-linear-gradient(left, #2441e7 0%, #ff1053 100%);
+    background-image: linear-gradient(to right, #2441e7 0%, #ff1053 100%);
+    background-repeat: repeat-x;
+    /* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF2441E7', endColorstr='#FFFF1053', GradientType=1); */
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    opacity: 0.8;
+}
+
+.content-slide {
+    text-align: center;
+    padding: 180px;
+    color: white;
+    position: absolute;
+    z-index: 2222;
+}

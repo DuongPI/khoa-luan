@@ -1,0 +1,64 @@
+button.btn-login {
+    margin-top: 20px;
+    padding: 15px 25px;
+    background: #0b1967;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #0b1967;
+    color: #fdfdff;
+    transition: 0.3s;
+    font-size: 20px;
+    border-radius: 5px;
+}
+button.btn-login:hover {
+    background: white;
+    color: blue;
+    border: 2px solid blue;
+}
+.form-submit {
+    text-align: center;
+}
+h1.title-form {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+}
+.form-submit {
+    text-align: center;
+}
+.form-submit a{
+	display: inline-block;
+    margin-top: 20px;
+    color: black;
+    text-decoration: underline !important;
+}
+h2.title-form {
+    text-align: center;
+}
+input#UserName,input#Password,input#User {
+    padding: 25px 16px;
+}
+.red{
+	color: red;
+}
+.contact-section.col-xl-4.col-lg-4.col-md-4 {
+    text-align: center;
+    padding-top: 70px;
+}
+
+.contact-section.col-xl-4.col-lg-4.col-md-4 .icon-contact i {
+    font-size: 60px;
+
+}
+
+.contact-section.col-xl-4.col-lg-4.col-md-4 h4 {
+    font-size: 28px;
+    margin-top: 20px;
+}
+.contact-section.col-xl-4.col-lg-4.col-md-4 p,.content.col-xl-6.col-lg-6.col-md-6.col-sm-6 p {
+    color: darkgray;
+}
+.map.col-xl-6.col-lg-6.col-md-6.col-sm-6, .content.col-xl-6.col-lg-6.col-md-6.col-sm-6 {
+    padding: 0px 50px;
+}
