@@ -12,7 +12,7 @@ public class HomeController {
 	@Autowired
 	private CourseCategoryService courseCategoryService;
 	
-	@GetMapping("/quan-tri/the-loai")
+	@GetMapping(value = {"/quan-tri/trang-chu","/quan-tri","/quan-tri/the-loai"})
 	public String Show(ModelMap model) {
 		model.addAttribute("courseCategories",courseCategoryService.findAll());
 		return "admin/category_management";

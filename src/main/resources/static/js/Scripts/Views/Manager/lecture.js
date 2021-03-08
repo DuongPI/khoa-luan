@@ -1,4 +1,4 @@
-﻿$(document).on('click', '#roomTable tbody tr', function () {
+$(document).on('click', '#roomTable tbody tr', function () {
     if ($(this).hasClass('Selected')) {
         $(this).removeClass('Selected')
         $('button.btn.modify').attr('disabled', true); $('button.btn.delete').attr('disabled', true)
@@ -15,7 +15,7 @@
 $(document).on('click', 'button.btn.btn-warning.pull-right', function () {
     var ID = $('tr.Selected').data("id");
 
-    $('#modal .modal-title').text('CHỈNH SỬA THỂ LOẠI');
+    $('#modal .modal-title').text('CHỈNH SỬA BÀI GIẢNG');
     $
     $('.modal-body [property]').each((index, item) => {
         $(item).val($('tr.Selected').children()[index + 1].innerText)
@@ -26,7 +26,7 @@ $(document).on('click', 'button.btn.btn-warning.pull-right', function () {
 
 $(document).on('click', 'button.btn.btn-success.pull-right', function () {
     mode = 1;
-    $('#modal .modal-title').text('THÊM THỂ LOẠI');
+    $('#modal .modal-title').text('THÊM BÀI GIẢNG');
 });
 
 //lưu form
@@ -36,33 +36,38 @@ $(document).on('click', '#modal .save', function () {
     let flag = checkDataInputModal();
     if (flag === 1) {
         if (mode === 1) {
-            let category = {
-                name: null,
-                description: null,
+            let lecture = {
+                lectureName : null,
+                lectureVideo : null,
+                chapterID: null,
             };
             $('[property]').each((index, item) => {
-                category[$(item).attr('property')] = $(item).val();
+                lecture[$(item).attr('property')] = $(item).val();
             });
-            ajaxJSON.post('/api/v1/category', category, true,
+            console.log(lecture);
+            ajaxJSON.post('/api/v1/lecture', lecture, true,
                 (res) => {
-                    window.location.replace('/quan-tri/the-loai');
+                    window.location.replace('/quan-tri/bai-giang');
+                    //console.log(res);
                 });
         }
         else if (mode === 2) {
-            let category = {
+            let lecture = {
                 id: $('tr.Selected').data('id'),
-                name: null,
-                description: null,
+                lectureName: null,
+                chapterID: null,
+                lectureVideo : null
             };
             $('[property]').each((index, item) => {
-                category[$(item).attr('property')] = $(item).val();
+                lecture[$(item).attr('property')] = $(item).val();
             });
-            console.log(category);
-            ajaxJSON.put('/api/v1/category', category, true,
+            console.log(lecture);
+            ajaxJSON.put('/api/v1/lecture', lecture, true,
                 function (data) {
-                    window.location.replace('/quan-tri/the-loai');
+                    window.location.replace('/quan-tri/bai-giang');
+                   // console.log(res);
                 })
-
+                
             // $.ajax({
             //     url: '/major/update',
             //     type: "PUT",
@@ -90,9 +95,9 @@ $(document).on('click', '#modal .save', function () {
     }
 });
 
-$("#delete-category" ).click(function() {
+$("#delete-lecture" ).click(function() {
 	let id = $('tr.Selected').data('id');
-    let url1 = '/api/v1/category/'+ id;
+    let url1 = '/api/v1/lecture/'+ id;
     console.log(url1);
     ajaxJSON.delete(url1, undefined,true,
         function (data) {

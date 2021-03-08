@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,9 @@ public class CourseServiceImpl implements CourseService{
 	private CourseConverter courseConverter;
 	@Autowired
 	private UploadFileUtils uploadFileUtils;
+	
+	
+	
 	@Override
 	public List<CourseDTO> findAll() {
 		List<CourseEntity> entities = courseRepository.findAll();
@@ -36,6 +41,7 @@ public class CourseServiceImpl implements CourseService{
 		return dtos;
 	}
 	@Override
+	@Transactional
 	public CourseDTO insert(CourseDTO dto) {
 		// TODO Auto-generated method stub
 		CourseEntity entity = courseConverter.toEntity(dto);
@@ -46,6 +52,7 @@ public class CourseServiceImpl implements CourseService{
 		return newDTO;
 	}
 	@Override
+	@Transactional
 	public CourseDTO update(CourseDTO dto) {
 		// TODO Auto-generated method stub
 		CourseEntity oldentity = courseRepository.findById(dto.getId()).get();
@@ -57,6 +64,7 @@ public class CourseServiceImpl implements CourseService{
 		return newDTO;
 	}
 	@Override
+	@Transactional
 	public void delete(long id) {
 		// TODO Auto-generated method stub
 		courseRepository.deleteById(id);

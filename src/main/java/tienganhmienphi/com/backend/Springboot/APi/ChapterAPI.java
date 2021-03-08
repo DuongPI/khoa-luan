@@ -1,8 +1,10 @@
 package tienganhmienphi.com.backend.Springboot.APi;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,14 +31,15 @@ public class ChapterAPI {
 	}
 	
 	@PutMapping("/api/v1/chapter")
-	public ChapterDTO update(@RequestBody ChapterDTO courseDTO) {
-		return chapterService.update(courseDTO);
+	public ChapterDTO update(@RequestBody ChapterDTO chapterDTO) {
+		return chapterService.update(chapterDTO);
 	}
 //	ResponseEntity
 //	return ResponseEntity.ok().build();
 	
-	@DeleteMapping("/api/v1/chapter")
-	public void delete(@RequestBody long[] ids) {
-		chapterService.delete(ids);
+	@DeleteMapping("/api/v1/chapter/{id}")
+	public ResponseEntity<Void> delete(@PathVariable(required = true) String id) {
+		chapterService.delete(Long.parseLong(id));
+		return ResponseEntity.noContent().build();
 	}
 }

@@ -15,7 +15,13 @@ public class HomeController {
 	@Autowired
 	private CourseService courseService;
 	
-	@GetMapping("")
+	@GetMapping("/")
+	public String ShowHome() {
+		
+		return "redirect:trang-chu";
+	}
+	
+	@GetMapping("/trang-chu")
 	public String ShowHome(ModelMap model) {
 		model.addAttribute("courseCategories",courseCategoryService.findAll());
 		model.addAttribute("courses", courseService.findAll());

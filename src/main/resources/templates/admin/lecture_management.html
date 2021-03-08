@@ -1,10 +1,12 @@
 <!doctype html>
-<html style="height: auto; min-height: 100%;" lang="vi">
+<html style="height: auto; min-height: 100%;" lang="vi"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Quản lí khóa học</title>
+<title>ExamReg</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -199,7 +201,7 @@
 							<img th:src="@{/img/alien.png}" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p class="ManagerName">User</p>
+							<p class="ManagerName">ADMIN</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
 					</div>
@@ -225,17 +227,17 @@
 
 							</span>
 						</a></li>
-						<li class="active"><a th:href="@{/quan-tri/khoa-hoc}"> <i class="fa fa-calendar"></i> <span>Khóa
+						<li><a th:href="@{/quan-tri/khoa-hoc}"> <i class="fa fa-calendar"></i> <span>Khóa
 									Học</span>
 
 						</a></li>
 
-						<li><a th:href="@{/quan-tri/cac-chuong}"> <i class="fa fa-university"></i> <span>Các
+						<li ><a th:href="@{/quan-tri/cac-chuong}"> <i class="fa fa-university"></i> <span>Các
 									Chương</span>
 
 						</a></li>
 
-						<li><a th:href="@{/quan-tri/bai-giang}"> <i class="fa fa-user"></i> <span>Bài
+						<li class="active"><a th:href="@{/quan-tri/bai-giang}"> <i class="fa fa-user"></i> <span>Bài
 									Giảng</span>
 
 						</a></li>
@@ -260,7 +262,7 @@
 		<div class="content-wrapper" style="min-height: 618px;">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>Quản lí khóa học</h1>
+				<h1>Quản lí các bài giảng</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
 				</ol>
@@ -274,7 +276,7 @@
 				<div class="box" data-select2-id="12">
 					<!-- /.box-header -->
 					<div class="box-header">
-						<h3 class="box-title">Danh Sách Các Khóa học</h3>
+						<h3 class="box-title">Danh Sách Các Bài Giảng</h3>
 						<span class="pull-right-container">
 							<button type="button" class="btn btn-danger pull-right delete"
 								ref="student" data-toggle="modal" data-target="#modal-delete"
@@ -296,22 +298,23 @@
 							<thead>
 								<tr>
 									<th>STT</th>
-									<th>Tên</th>
-									<th>Mô tả ngắn</th>
-									<th>Mô tả</th>
-									<th>Thể loại</th>
-									<th>Ảnh</th>
+									<th>Tên bài giảng</th>
+									<th>Video</th>
+									<th>Chương</th>
+									<th>Khóa học</th>
+
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="u, index : ${courses}"
+								<tr th:each="u, index : ${lectures}"
 									th:data-id="${u.id}">
 									<td th:text="${index.count}"></td>
-									<td th:text="${u.courseName}"></td>
-									<td th:text="${u.shortDescription}"></td>
-									<td th:text="${u.description}"></td>
-									<td th:text="${u.category}"></td>
-									<td th:text = "${u.imageName}"></td>
+									<td th:text="${u.lectureName}"></td>
+									<td th:text="${u.lectureVideo}"></td>
+									<td  style = "display:none" th:each="chapter, index: ${chapters}" th:if= "${u.chapterID} == ${chapter.id}"  th:text="${chapter.id}"></td>
+									<td th:each="chapter, index: ${chapters}" th:if= "${u.chapterID} == ${chapter.id}"  th:text="${chapter.chapterName}"></td>
+									<td th:each="chapter, index: ${chapters}" th:if= "${u.chapterID} == ${chapter.id}"  th:text="${chapter.course}"></td>
+									
 								</tr>
 
 
@@ -329,36 +332,27 @@
 									aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
-								<h4 class="modal-title">THÊM THỂ LOẠI</h4>
+								<h4 class="modal-title">THÊM BÀI GIẢNG</h4>
 							</div>
 							<div class="modal-body">
 								<div class="form-group">
-									<label>Tên</label> <input property="courseName" name = "courseName" 
-									id = "courseName" class="form-control" />
-								</div>
-								<div class="form-group">
-									<label>Mô tả ngắn</label> <input property="shortDescription" name = "shortDescription"
-										 id = "shortDescription" class="form-control" />
-								</div>
-								<div class="form-group">
-									<label>Mô tả</label> <input property="description" name = "description"
-										id = "description" class="form-control" />
-								</div>
-								
-								<div class="form-group">
-									<label>Thể loại</label> 
-									<select name="category" id="category" class="form-control" property="category">
-	                                        <option th:each="category, index: ${categories}" th:value="${category.id}" th:text="${category.name}">
-	                                        </option>
-                                    </select>
-                                    
-								</div>
-								<div class="form-group">
-									<label>Ảnh</label> <input type = "file" name = "image" id = "image" 
+									<label>Tên bài giảng</label> <input property="lectureName"
 										class="form-control" />
-									<p style = "color: red;">Xin vui lòng chọn ảnh</p>
 								</div>
-								
+								<div class="form-group">
+									<label>Video</label> <input property="lectureVideo"
+										class="form-control" />
+								</div>
+								<div class="form-group">
+									<label>Khóa học</label>
+									<select class="form-control" property="chapterID">
+									    <optgroup th:each="course, index: ${courses}" th:attr = "label= ${course.courseName},id= ${course.courseName}">
+									      <option th:each="chapter, index: ${chapters}" th:if= "${course.courseName} == ${chapter.course}" th:value="${chapter.id}" th:text="${chapter.chapterName}">
+	                                        </option>
+									    </optgroup>
+									
+									  </select>
+								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default pull-left"
 										data-dismiss="modal">Đóng</button>
@@ -379,13 +373,13 @@
 									aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
-								<h4 class="modal-title">XÓA DỮ LIỆU KHÓA HỌC</h4>
+								<h4 class="modal-title">XÓA DỮ LIỆU BÀI GIẢNG</h4>
 							</div>
 							<div class="modal-body">
-								<h4>Bạn có muốn xóa dữ liệu KHÓA HỌC này?</h4>
+								<h4>Bạn có muốn xóa dữ liệu chương học này?</h4>
 							</div>
 							<div class="modal-footer">
-								<button type="button" id="delete-course"
+								<button type="button" id="delete-lecture"
 									class="btn btn-outline pull-left save" data-dismiss="modal">Đồng
 									ý</button>
 								<button type="button" class="btn btn-outline"
@@ -434,6 +428,6 @@
 	<script th:src="@{/js/Scripts/common/common.js}"></script>
 	<script th:src="@{/js/Scripts/libraries/xlstojson/xlsx.full.min.js}"></script>
 	<script th:src="@{/js/Scripts/common/testLogin.js}"></script>
-	<script th:src="@{/js/Scripts/Views/Manager/course.js}"></script>
+	<script th:src="@{/js/Scripts/Views/Manager/lecture.js}"></script>
 </body>
 </html>

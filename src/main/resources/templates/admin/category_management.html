@@ -1,5 +1,7 @@
 <!doctype html>
-<html style="height: auto; min-height: 100%;" lang="vi">
+<html style="height: auto; min-height: 100%;" lang="vi"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 
 <meta charset="utf-8">
@@ -157,27 +159,23 @@
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"
-							aria-expanded="false"> <img th:src="@{/img/alien.png}"
+							aria-expanded="false" sec:authorize="isAuthenticated()"> <img th:src="@{/img/alien.png}"
 								class="user-image" alt="User Image"> <span
-								class="hidden-xs ManagerName">User</span>
+								class="hidden-xs ManagerName" sec:authentication="principal.FullName">User</span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header"><img th:src="@{/img/alien.png}"
 									class="img-circle" alt="User Image">
 
-									<p>
-										<span class="ManagerName">User</span>
+									<p sec:authorize="isAuthenticated()">
+										<span class="ManagerName" sec:authentication="name">User</span>
 									</p></li>
 
 								<!-- Menu Footer-->
 								<li class="user-footer">
-									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Thông tin cá
-											nhân</a>
-									</div>
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">Đăng xuất</a>
+										<a th:href="@{/logout}" class="btn btn-default btn-flat">Đăng xuất</a>
 									</div>
 								</li>
 							</ul></li>
@@ -203,7 +201,7 @@
 							<img th:src="@{/img/alien.png}" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p class="ManagerName">User</p>
+							<p class="ManagerName">ADMIN</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
 					</div>
@@ -224,27 +222,29 @@
 					<ul class="sidebar-menu tree" data-widget="tree">
 						<li class="header">QUẢN LÝ</li>
 
-						<li class="active"><a href="#"> <i class="fa fa-server"></i>
+						<li class="active"><a th:href="@{/quan-tri/the-loai}"> <i class="fa fa-server"></i>
 								<span>Thể loại</span> <span class="pull-right-container">
 
 							</span>
 						</a></li>
-						<li><a href="#"> <i class="fa fa-calendar"></i> <span>Khóa
+						<li><a th:href="@{/quan-tri/khoa-hoc}"> <i class="fa fa-calendar"></i> <span>Khóa
 									Học</span>
 
 						</a></li>
 
-						<li><a href="#"> <i class="fa fa-university"></i> <span>Các
+						<li><a th:href="@{/quan-tri/cac-chuong}"> <i class="fa fa-university"></i> <span>Các
 									Chương</span>
 
 						</a></li>
 
-						<li><a href="#"> <i class="fa fa-user"></i> <span>Bài
+						<li><a th:href="@{/quan-tri/bai-giang}"> <i class="fa fa-user"></i> <span>Bài
 									Giảng</span>
 
 						</a></li>
-						<li><a href="#"> <i class="fa fa-book"></i> <span>Môn
-									học</span>
+						<li><a th:href="@{/quan-tri/bai-viet}"> <i class="fa fa-book"></i> <span>Bài viết</span>
+
+						</a></li>
+						<li><a th:href="@{/quan-tri/hoc-vien}"> <i class="fa fa-book"></i> <span>Học viên</span>
 
 						</a></li>
 					</ul>

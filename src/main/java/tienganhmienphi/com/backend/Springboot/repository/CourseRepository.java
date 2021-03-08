@@ -8,4 +8,6 @@ import tienganhmienphi.com.backend.Springboot.entity.CourseEntity;
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity,Long> {
 
+	CourseEntity findByCourseName(String course);
+
 }
