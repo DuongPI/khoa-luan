@@ -23,7 +23,7 @@ h1.title-form {
     margin-bottom: 40px;
     font-weight: bold;
 }
-}
+
 .form-submit {
     text-align: center;
 }
@@ -36,7 +36,7 @@ h1.title-form {
 h2.title-form {
     text-align: center;
 }
-input#UserName,input#Password,input#User {
+input#username,input#password,input#User {
     padding: 25px 16px;
 }
 .red{
