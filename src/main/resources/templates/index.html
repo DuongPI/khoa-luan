@@ -113,7 +113,7 @@
             </div>
             <div class="course">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4">
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-4">
                         <div class="course-element">
                             <a href="introduce-course.html">
                             <div class="course-image" style="background-image: url('img/1579509180158.png');">
@@ -132,13 +132,13 @@
                             </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <div class="col-xl-4 col-lg-4 col-md-4" th:each = "item:${courses}">
                         <div class="course-element">
                             <a href="introduce-course.html">
-                                <div class="course-image" >
-                             	th:style="'background-image:url(' + ${item.imageToBasee64} + ');'"
+                                <div class="course-image" th:style="'background-image:url(data:image/jpeg;base64,' + ${item.imagetobase64} + ');'" >
+                             	
                                 </div>
                                 <div class="course-content">
                                     <h4 th:text = "${item.courseName}"></h4>

@@ -13,12 +13,12 @@
     padding-top: 8px;
     border-bottom: 2px solid orange;
 }
-.advertisement-image{
+.advertisement-image-a{
     overflow: hidden;
     margin-top: 30px;
     margin-bottom: 30px;
 }
-.advertisement-image img{
+.advertisement-image-a img{
     width: 100%;
 }
 /* new content */
