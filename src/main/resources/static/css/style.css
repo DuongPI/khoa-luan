@@ -15,7 +15,7 @@ a{
     background-color: #ffc107;
 }
 #header{
-    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 10%);
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 27%);
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -23,7 +23,9 @@ a{
     max-width: 132px;
     margin-left: 50px;
 }
-
+.course-content p {
+    font-size: .875rem;
+}
 .search {
         margin-top: 17px;
 }
@@ -68,10 +70,11 @@ ul.menu_level_2{
     position: absolute;
     list-style: none;
     top: 55px;
-    left: -37px;
+    left: 10px;
     z-index: 99999;
     transition: 0.5s;
     visibility: hidden;
+    white-space: nowrap;
     opacity: 0;
 }
 .level_1:hover .menu_level_2{
@@ -81,6 +84,7 @@ ul.menu_level_2{
 
 ul.menu_level_2 li a {
     display: block;
+    text-align: left;
     background: whitesmoke;
     padding: 10px 20px;
     color: black;
@@ -111,7 +115,7 @@ section .section-title {
     text-transform: uppercase;
 }
 #footer {
-    background: #151515 !important;
+    background: #3a3a3a !important;
 }
 #footer h5{
   padding-left: 10px;
@@ -136,9 +140,7 @@ section .section-title {
   transition: .5s all ease;
   color:#ffffff;
 }
-#footer ul.quick-links li:hover{
-  padding: 10px 0;
-  margin-left:5px;
+#footer ul.quick-links li:hover a{
   font-weight:700;
 }
 #footer ul.quick-links li a i{
@@ -186,7 +188,8 @@ section .section-title {
     font-size: 15px;
     z-index: 4;
     top: 30%;
-    left: 32%;
+    width: 100%;
+    text-align: center;
     color: white;
 }
 
@@ -326,12 +329,15 @@ button.btn-course:hover a {
         overflow: hidden;
         background-size: cover;
         background-position: center;
-        height: 190px;
+        height: 200px;
         transition: 0.4s;
     }
     .course-element:hover .course-image {
         opacity: 0.8;
         transform: scale3D(1.1, 1.1, 1);
+    }
+    .course-element:hover h4 {
+        opacity: 1;
     }
 
     .course-image img {
@@ -341,11 +347,9 @@ button.btn-course:hover a {
     .course-element {
         border-radius: 5px;
         overflow: hidden;
-        margin-top: 30px;
-        box-shadow: 0 8px 20px #e3e7ea;
         transition: 0.3s;
-        border: 1px solid white;
-        margin-bottom: 15px;
+        border: 1px solid #e8e1e1;
+        margin-bottom: 30px;
     }
 
     .course-content {
@@ -359,14 +363,21 @@ button.btn-course:hover a {
     }
 
     .course-element:hover {
-        box-shadow: 0 8px 20px #ccc;
-        border: 1px solid #25a664;
+        box-shadow: 0 5px 5px #CCCCCC;
     }
     .course-footer-price {
         float: right;
     }
+    .course-content h4 {
+    	font-weight: bold;
+    	margin-top:15px;
+        opacity: 0.8;
+        font-size: 1.25rem;
+    }
+    
     .course-content h4,.course-content p {
         color: #303036;
+        margin-bottom:15px;
     }
 
     .course-footer {
@@ -433,7 +444,7 @@ hr{
     }
     button.button-menu {
         display: inline-block;
-        float: right: 
+        float: right;
     }
 }
 @media only screen and (max-width: 575px){
@@ -446,7 +457,7 @@ hr{
     }
     button.button-menu {
         display: inline-block;
-        float: right: 
+        float: right;
     }
 }
 

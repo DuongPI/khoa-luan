@@ -28,20 +28,22 @@
         padding-bottom: 30px;
         padding-right: 15px;
     }
+    .news-content h5 {
+        font-weight: bold;
+        color: deepskyblue !important;
+    }
     .news-element {
         border-radius: 5px;
         overflow: hidden;
         margin-top: 30px;
-        box-shadow: 0 8px 20px #e3e7ea;
         transition: 0.3s;
-        border: 1px solid white;
-        margin-bottom: 15px;
+        border: 1px solid #e8e1e1;
     }
     .news-image {
         overflow: hidden;
         background-size: cover;
         background-position: center;
-        height: 190px;
+        height: 200px;
     }
 
     .news-image img {
@@ -50,8 +52,7 @@
     }
 
 .news-element:hover {
-        box-shadow: 0 8px 20px #ccc;
-        border: 1px solid #25a664;
+        box-shadow: 0 5px 10px #CCCCCC;
     }
 .news-content h5,.news-content p {
     color: #303036;

@@ -22,7 +22,9 @@ public class PostConverter {
 		dto.setCategory(entity.getPostcategory().getId());
 		dto.setContent(entity.getContent());
 		dto.setName(entity.getName());
+		dto.setImage(entity.getImage());
 		dto.setUrlname(cover.covertToStringUrl(entity.getName()));
+		dto.setShortDecripsion(entity.getShortDecripsion());
 		return dto;
 	}
 	public PostEntity toEntity(PostDTO dto) {
@@ -30,6 +32,8 @@ public class PostConverter {
 		PostEntity entity = new PostEntity();
 		entity.setContent(dto.getContent());
 		entity.setName(dto.getName());
+		entity.setImage(dto.getImage());
+		entity.setShortDecripsion(dto.getShortDecripsion());
 		entity.setPostcategory(category);
 		return entity;
 	}
@@ -37,6 +41,8 @@ public class PostConverter {
 		PostCategoryEntity category = postCategoryRepository.findById(dto.getCategory()).get();
 		entity.setContent(dto.getContent());
 		entity.setName(dto.getName());
+		entity.setImage(dto.getImage());
+		entity.setShortDecripsion(dto.getShortDecripsion());
 		entity.setPostcategory(category);
 		return entity;
 	}

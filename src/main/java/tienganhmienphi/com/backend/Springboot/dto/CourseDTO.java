@@ -7,6 +7,7 @@ public class CourseDTO {
 	private String description;
 	private String imageName;
 	private String imagetobase64;
+	private String urlName;
     private long category;
 	public Long getId() {
 		return id;
@@ -50,6 +51,12 @@ public class CourseDTO {
 	}
 	public void setImagetobase64(String imagetobase64) {
 		this.imagetobase64 = imagetobase64;
+	}
+	public String getUrlName() {
+		return urlName;
+	}
+	public void setUrlName(String urlName) {
+		this.urlName = urlName;
 	}
     
 }

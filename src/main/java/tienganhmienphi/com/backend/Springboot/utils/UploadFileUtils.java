@@ -45,7 +45,7 @@ public class UploadFileUtils {
 	        System.out.println("Error Reading The File.");
 	        e1.printStackTrace();
 	    }
-		System.out.println(imageString);
+
 		return imageString;
 	}
 }

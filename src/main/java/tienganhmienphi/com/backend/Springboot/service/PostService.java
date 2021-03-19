@@ -8,5 +8,6 @@ public interface PostService {
 	public List<PostDTO> findAll();
 	public PostDTO insert(PostDTO dto);
 	public PostDTO update(PostDTO dto);
-	void delete(long id);
+	public void delete(long id);
+	public PostDTO findByName(String name);
 }

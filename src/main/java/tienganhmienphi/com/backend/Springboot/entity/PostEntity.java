@@ -22,6 +22,12 @@ public class PostEntity {
 	@Column
 	private String content;
 	
+	@Column
+	private String shortDecripsion;
+	
+	@Column
+	private String image;
+	
 	@ManyToOne
 	@JoinColumn(name = "postcategoryid")
     private PostCategoryEntity postcategory;
@@ -53,5 +59,22 @@ public class PostEntity {
 	public Long getId() {
 		return id;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getShortDecripsion() {
+		return shortDecripsion;
+	}
+
+	public void setShortDecripsion(String shortDecripsion) {
+		this.shortDecripsion = shortDecripsion;
+	}
+	
 	
 }

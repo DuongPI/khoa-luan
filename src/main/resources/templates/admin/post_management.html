@@ -300,19 +300,23 @@
 								<tr>
 									<th>STT</th>
 									<th>Tên</th>
-									<th>content</th>
-									<th>thể loại</th>
+									<th>Mô tả</th>
+									<th>Content</th>
+									<th>Thể loại</th>
+									<th>Ảnh</th>
 
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="u, index : ${posts}"
-									th:data-id="${u.id}" th:data-content = "${u.content}">
+									th:data-id="${u.id}" >
 									<td th:text="${index.count}"></td>
 									<td th:text="${u.name}"></td>
+									<td th:text="${u.shortDecripsion}"></td>
 									<td  style = "display:none" th:each="category, index: ${categories}" th:if= "${u.category} == ${category.id}"  th:text="${category.id}"></td>
 									<td id="_content" th:text="${u.content}"></td>
 									<td th:each="category, index: ${categories}" th:if= "${u.category} == ${category.id}"  th:text="${category.name}"></td>
+									<td th:text = "${u.image}"></td>
 								</tr>
 
 
@@ -339,6 +343,11 @@
 										class="form-control" />
 								</div>
 								<div class="form-group">
+									<label>Mô tả</label> 
+									<input property="shortDecripsion"
+										class="form-control" />
+								</div>
+								<div class="form-group">
 									<label>Thể loại</label> 
 									<select name="category" id="category" class="form-control" property="category">
 	                                        <option th:each="category, index: ${categories}" th:value="${category.id}" th:text="${category.name}">
@@ -349,8 +358,11 @@
 									<label>Nội dung</label> 
 									<textarea id="editor1" name="editor1" class="form-control" property="content">
                     				</textarea>
-                    				
-                    				
+								</div>
+								<div class="form-group">
+									<label>Ảnh</label> <input type = "file" name = "image" id = "image" 
+										class="form-control" />
+									<p style = "color: red;">Xin vui lòng chọn ảnh</p>
 								</div>
 								
 								<div class="modal-footer">

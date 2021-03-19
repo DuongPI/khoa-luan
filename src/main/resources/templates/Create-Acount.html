@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
 <body>
     <header id="header" class="menu-top container-fluid">
         <div class="row">
-            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="/" title="Trang chủ"><img src="img/logo.png" alt="logo"></a></div>
+            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="/" title="Trang chủ"><img th:src="@{/img/logo.png}" alt="logo"></a></div>
             <div class="search col-xl-3">
                 <form class="form" >
                     <div class="input-group">

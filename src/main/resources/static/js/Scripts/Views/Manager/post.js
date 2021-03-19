@@ -13,6 +13,19 @@ $(document).on('click', '#roomTable tbody tr', function () {
 })
 var a;
 a = CKEDITOR.replace( 'editor1' );
+var arraybase64 = {};
+$("#image").change(function(){
+	var files = $(this)[0].files[0];
+	if(files != undefined){
+		var reader = new FileReader();
+		reader.onload = function(e){
+			arraybase64["base64"] = e.target.result;
+			arraybase64["name"] =files.name;
+			console.log(arraybase64);
+		}
+		reader.readAsDataURL(files);
+	}
+});
 
 $(document).on('click', 'button.btn.btn-warning.pull-right', function () {
     var ID = $('tr.Selected').data("id");
@@ -43,17 +56,22 @@ $(document).on('click', '#modal .save', function () {
             let post = {
                 name: null,
                 content: null,
-                urlname: null
+                urlname: null,
+                image: null,
+                imagetobase64: null,
+                shortDecripsion: null
             };
             $('[property]').each((index, item) => {
                 post[$(item).attr('property')] = $(item).val();
             });
             post["content"] = a.getData();
+            post["imagetobase64"] = arraybase64["base64"];
+			post["image"] = arraybase64["name"];
             console.log(post);
             ajaxJSON.post('/api/v1/post', post, true,
                 (res) => {
                     window.location.replace('/quan-tri/bai-viet');
-                    //console.log(res);
+                    console.log(res);
                 });
         }
         else if (mode === 2) {
@@ -61,36 +79,23 @@ $(document).on('click', '#modal .save', function () {
                 id: $('tr.Selected').data('id'),
                 name: null,
                 content: null,
-                urlname: null
+                urlname: null,
+                image: null,
+                imagetobase64: null,
+                shortDecripsion: null
             };
             $('[property]').each((index, item) => {
                 post[$(item).attr('property')] = $(item).val();
             });
             post["content"] = a.getData();
+            post["imagetobase64"] = arraybase64["base64"];
+			post["image"] = arraybase64["name"];
             console.log(post);
             ajaxJSON.put('/api/v1/post', post, true,
                 function (data) {
                     window.location.replace('/quan-tri/bai-viet');
-                    //console.log(data);
+                    console.log(data);
                 })
-
-            // $.ajax({
-            //     url: '/major/update',
-            //     type: "PUT",
-            //     contentType: 'text/html;charset=UTF-8',
-            //     dataType: "text/html",
-            //     encoding: "UTF-8",
-            //     data: {
-            //         major
-            //     },
-            //     success: function (data) {
-            //         // some task
-            //         window.location.replace('/major');
-            //     }
-            //     , fail: function () {
-            //         // some task
-            //     }
-            // })
 
         }
     }

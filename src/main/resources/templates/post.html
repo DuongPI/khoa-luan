@@ -6,19 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/css/introduce-course.css}">
+    <link rel="stylesheet" th:href="@{/css/course.css}">
+    <link rel="stylesheet" th:href="@{/css/news.css}">
     <!-- Bootstrap CSS --> 
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <script th:src="@{/js/popper.min.js}"></script>
-    <title>Khóa học lập trình java căn bản</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="js/popper.min.js"></script>
+    <title>Bài viết</title>
 </head>
 <body>
     <header id="header" class="menu-top container-fluid">
         <div class="row">
-            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="/" title="Trang chủ"><img th:src="@{/img/logo.png}" alt="logo"></a></div>
+            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a th:href="@{/trang-chu}" title="Trang chủ"><img th:src="@{/img/logo.png}" alt="logo"></a></div>
             <div class="search col-xl-3">
                 <form class="form" >
                     <div class="input-group">
@@ -46,7 +47,7 @@
                         <li class="level_1" ><a href="/lien-he" title="">Liên hệ</a></li>
                         <li class="level_1" >
                             <a href="#">
-                                Trang <img th:src="@{/img/right.png}"></a>
+                                Trang <img src="img/right.png"></a>
                             <ul class="menu_level_2">
                                 <li class="level_2"><a href="/bai-viet" title="">Bài viết</a></li>
                                 <li class="level_2"><a href="/ve-chung-toi" title="">Về chúng tôi</a></li>
@@ -66,39 +67,59 @@
 
         </div>
     </header>
+
     <!-- /header -->
-    <section class="title-page container-fluid" th:style="'background-image:url('+ @{/img/breadcrumb-bkg-1.jpg}+');'">
+    <section class="title-page container-fluid" style="background-image: url('img/breadcrumb-bkg-1.jpg">
             <div class="content-slide">
-                <h1 th:text = "'Khóa Học: ' + ${course.courseName}">Khóa học lập trình căn bản</h1>
+                <h1>Các bài viết</h1>
             </div>
     </section>
-    <div class="introduce-course">
-        <div class="container">
-            <h2>Giới thiệu khóa học</h2>
-            <p th:utext="${course.description}">thông tin giới thiệu khóa học TOIEC 350+</p>
-            </div>
-    </div>
-    <section class="content-course ">
-        
-        <div class="container">
-            <h2>Nội dung khóa học</h2>
-            <div class="wrap-content-course">
-                <div class="section" th:each="item: ${chapters}">
-                    <h4 class="title-section" th:text = "${item.chapterName}">Giới thiệu</h4>
-                    <a th:href="@{'/learn/' + ${name} +'/'+ ${item.id} }" class="lecture" th:each="u: ${item.lectures}" >
-                        <div class="title-lecture" >
-                            <i class="fa fa-youtube-play"></i>
-                            <span th:text= "${u.lectureName}"></span>
+    <section class="container" style="margin-bottom: 80px;">
+            <div class="news-content">
+                <div class="row">
+                    <div class="left-content col-lg-8 col-md-8">
+                        <div class="title">Bài viết nổi bật</div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6" th:each="item: ${posts}">
+                                <div class="news-element">
+                                    <a th:href="@{'/bai-viet/'+ ${item.urlname}}">
+	                                    <div class="news-image" th:style="'background-image:url(data:image/jpeg;base64,' + ${item.imagetobase64} + ');'">
+	                                    </div>
+	                                    <div class="news-content">
+	                                        <h5 th:text="${item.name}">Cấu trúc remind: Cách dùng, Ví dụ cụ thể & Bài tập chi tiết</h5>
+	                                        <p th:text="${item.shortDecripsion}">Cấu trúc remind trong tiếng Anh thường được dùng khi chủ thể/ người nói muốn…</p>
+	                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-preview">Xem ngay</button>
+                    </div>
+                    <div class="right-content col-lg-4 col-md-4">
+                        <div class="box-advertisement-a">
+                            <div class="title">
+                                EBOOK HACK NÃO PHƯƠNG PHÁP
+                            </div>
+                            <div class="advertisement-image-a">
+                                <img src="img/4875.png" alt="">
+                            </div>
+                       
                         </div>
-                    </a>
+                        <div class="box-advertisement-a">
+                            <div class="title">
+                                EBOOK HACK NÃO PHƯƠNG PHÁP
+                            </div>
+                            <div class="advertisement-image-a">
+                                <img src="img/4875.png" alt="">
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    
                 </div>
-            
-                
             </div>
-        </div>
     </section>
 
 
@@ -118,9 +139,9 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
               <h5>Tienganhmienphi</h5>
               <ul class="list-unstyled quick-links">
-                <li><a href="/ve-chung-toi"><i class="fa fa-angle-double-right"></i>Về chúng tôi</a></li>
-                <li><a href="/lien-he"><i class="fa fa-angle-double-right"></i>Liên hệ</a></li>
-                <li><a href="/bai-viet"><i class="fa fa-angle-double-right"></i>Các bài viết</a></li>
+                <li><a href="about-us.html"><i class="fa fa-angle-double-right"></i>Về chúng tôi</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Liên hệ</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Các bài viết</a></li>
               </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
@@ -141,6 +162,6 @@
         </div>
     </section>
     <!-- ./Footer -->
-    <script th:src="@{/js/common.js}"> </script>
+    <script src="js/common.js"> </script>
 </body>
 </html>

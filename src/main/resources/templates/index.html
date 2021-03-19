@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,7 @@
 <body>
     <header id="header" class="menu-top container-fluid">
         <div class="row">
-            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="/" title="Trang chủ"><img src="img/logo.png" alt="logo"></a></div>
+            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="/" title="Trang chủ"><img th:src="@{/img/logo.png}" alt="logo"></a></div>
             <div class="search col-xl-3">
                 <form class="form" >
                     <div class="input-group">
@@ -30,17 +31,26 @@
             <nav class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-6">
                 <div class="wrap-menu">
                     <ul class="menu" >
-                        <li class="level_1" ><a href="/dang-ky" title="">Đăng ký</a></li>
-                        <li class="level_1" ><a href="/dang-nhap" title="">Đăng nhập</a></li>
+                        <li class="level_1" sec:authorize="isAuthenticated()">
+                            <a href="#" sec:authentication="principal.FullName">
+                                username </a>
+                            <ul class="menu_level_2">
+                                <li class="level_2"><a href="/dang-nhap?logout" title="">Đăng Xuất</a></li>
+
+                            </ul>
+
+                        </li>
+                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-ky" title="">Đăng ký</a></li>
+                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-nhap" title="">Đăng nhập</a></li>
                         <li class="level_1" ><a href="/lien-he" title="">Liên hệ</a></li>
                         <li class="level_1" >
                             <a href="#">
                                 Trang <img src="img/right.png"></a>
-                                <ul class="menu_level_2">
-                                    <li class="level_2"><a href="/bai-viet" title="">Bài viết</a></li>
-                                    <li class="level_2"><a href="/ve-chung-toi" title="">Về chúng tôi</a></li>
-                                </ul>
-                            
+                            <ul class="menu_level_2">
+                                <li class="level_2"><a href="/bai-viet" title="">Bài viết</a></li>
+                                <li class="level_2"><a href="/ve-chung-toi" title="">Về chúng tôi</a></li>
+                            </ul>
+
                         </li>
                         <li class="level_1" ><a href="/khoa-hoc" title="">Khóa học</a></li>
                         <li class="level_1" ><a href="/" title="">Trang chủ</a></li>
@@ -61,7 +71,7 @@
             <div class="slider-content" >
                 <h1>Chất lượng là trên hết</h1>
                 <p>Chúng tôi luôn cung cấp cho bạn những khóa học bổ ích</p>
-                <button class="btn-slider">Tham gia miễn phí</button>
+                <a th:href = "@{/dang-nhap}"><button class="btn-slider">Tham gia miễn phí</button></a>
             </div>
     </section>
     <!-- end slider -->
@@ -91,8 +101,8 @@
             </div> 
             <div class="khoi col-xl-4 col-lg-4 col-md-4" th:each="item:${courseCategories}">
                 <div class="ndkhoi">
-                    <a href="#">
-                        <img src="img/10398-1.jpg" alt="">
+                    <a th:href="@{'/khoa-hoc/the-loai/'+ ${item.id}}">
+                        <img src="img/the-loai.jpg" alt="">
                         <div class="maughi"></div>
                         <div class="hinhvuong"></div>
                         <div class="mauxam"></div>
@@ -103,7 +113,7 @@
             </div>
  
             <div class="button-course">
-                <button class="btn-course"><a href="index.html">Xem tất cả các khóa học</a></button>
+                <button class="btn-course"><a href="/khoa-hoc">Xem tất cả các khóa học</a></button>
             </div>    
         </div>
         <div class="row">
@@ -136,7 +146,7 @@
                     
                     <div class="col-xl-4 col-lg-4 col-md-4" th:each = "item:${courses}">
                         <div class="course-element">
-                            <a href="introduce-course.html">
+                            <a th:href="@{'/khoa-hoc/'+${item.urlName}}">
                                 <div class="course-image" th:style="'background-image:url(data:image/jpeg;base64,' + ${item.imagetobase64} + ');'" >
                              	
                                 </div>
@@ -160,52 +170,33 @@
         </div>
 
 <!-- news -->
-        <div class="row">
+        <div class="row" style="margin-bottom: 100px;">
             <div class="titlenews">
                 <h2>Các bài viết nổi bật</h2>
+                <p>Đây là những bài viết có phản hồi tích cực nhất</p>
             </div>
             <div class="news">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4">
+                    
+                    <div class="col-xl-4 col-lg-4 col-md-4" th:each = "item: ${posts}">
                         <div class="course-element">
                             <a href="#">
-                                <div class="course-image" style="background-image: url('img/1579509180158.png');">
+                                <div class="course-image" th:style="'background-image:url(data:image/jpeg;base64,' + ${item.imagetobase64} + ');'" 
+                                >
                                 </div>
                                 <div class="course-content">
-                                    <h4>TOEIC Online Premium</h4>
-                                    <p>Phạm Ích Dương</p>
+                                    <h4 th:text = "${item.name}">TOEIC Online Premium</h4>
+                                    <p> Tác Giả: Phạm Ích Dương</p>
+                                    <p th:text = "${item.shortDecripsion}">Phạm Ích Dương hóa học đề cao việc thực hành qua những ví dụ trong thực tế giúp học viên nhanh chóng xây dựng được giao diện websit</p>
                                 </div>
                             </a>
+                            
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="course-element">
-                            <a href="#">
-                                <div class="course-image" style="background-image: url('img/1579509180158.png');">
-                                </div>
-                                <div class="course-content">
-                                    <h4>TOEIC Online Premium</h4>
-                                    <p>Phạm Ích Dương hóa học đề cao việc thực hành qua những ví dụ trong thực tế giúp học viên nhanh chóng xây dựng được giao diện websit</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="course-element">
-                            <a href="#">
-                                <div class="course-image" style="background-image: url('img/1579509180158.png');">
-                                </div>
-                                <div class="course-content">
-                                    <h4>TOEIC Online Premium</h4>
-                                    <p>Phạm Ích Dương hóa học đề cao việc thực hành qua những ví dụ trong thực tế giúp học viên nhanh chóng xây dựng được giao diện websit</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 <!-- end news -->
-        
     </section>
 
 

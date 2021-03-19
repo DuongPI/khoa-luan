@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,17 +33,26 @@
             <nav class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-6">
                 <div class="wrap-menu">
                     <ul class="menu" >
-                        <li class="level_1" ><a href="/dang-ky" title="">Đăng ký</a></li>
-                        <li class="level_1" ><a href="/dang-nhap" title="">Đăng nhập</a></li>
+                        <li class="level_1" sec:authorize="isAuthenticated()">
+                            <a href="#" sec:authentication="principal.FullName">
+                                username </a>
+                            <ul class="menu_level_2">
+                                <li class="level_2"><a href="/dang-nhap?logout" title="">Đăng Xuất</a></li>
+
+                            </ul>
+
+                        </li>
+                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-ky" title="">Đăng ký</a></li>
+                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-nhap" title="">Đăng nhập</a></li>
                         <li class="level_1" ><a href="/lien-he" title="">Liên hệ</a></li>
                         <li class="level_1" >
                             <a href="#">
                                 Trang <img src="img/right.png"></a>
-                                <ul class="menu_level_2">
-                                    <li class="level_2"><a href="/bai-viet" title="">Bài viết</a></li>
-                                    <li class="level_2"><a href="/ve-chung-toi" title="">Về chúng tôi</a></li>
-                                </ul>
-                            
+                            <ul class="menu_level_2">
+                                <li class="level_2"><a href="/bai-viet" title="">Bài viết</a></li>
+                                <li class="level_2"><a href="/ve-chung-toi" title="">Về chúng tôi</a></li>
+                            </ul>
+
                         </li>
                         <li class="level_1" ><a href="/khoa-hoc" title="">Khóa học</a></li>
                         <li class="level_1" ><a href="/" title="">Trang chủ</a></li>
@@ -137,9 +147,9 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
               <h5>Tienganhmienphi</h5>
               <ul class="list-unstyled quick-links">
-                <li><a href="about-us.html"><i class="fa fa-angle-double-right"></i>Về chúng tôi</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Liên hệ</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Các bài viết</a></li>
+                <li><a href="/ve-chung-toi"><i class="fa fa-angle-double-right"></i>Về chúng tôi</a></li>
+                <li><a href="/lien-he"><i class="fa fa-angle-double-right"></i>Liên hệ</a></li>
+                <li><a href="/bai-viet"><i class="fa fa-angle-double-right"></i>Các bài viết</a></li>
               </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">

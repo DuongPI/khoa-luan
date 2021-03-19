@@ -5,7 +5,10 @@ public class PostDTO {
 	private String name;
 	private String content;
 	private String urlname;
+	private String image;
+	private String imagetobase64;
 	private long category;
+	private String shortDecripsion;
 	public long getCategory() {
 		return category;
 	}
@@ -35,6 +38,24 @@ public class PostDTO {
 	}
 	public void setUrlname(String urlname) {
 		this.urlname = urlname;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getImagetobase64() {
+		return imagetobase64;
+	}
+	public void setImagetobase64(String imagetobase64) {
+		this.imagetobase64 = imagetobase64;
+	}
+	public String getShortDecripsion() {
+		return shortDecripsion;
+	}
+	public void setShortDecripsion(String shortDecripsion) {
+		this.shortDecripsion = shortDecripsion;
 	}
 	
 	

@@ -20,6 +20,7 @@ public class PostAPI {
 	
 	@PostMapping("/api/v1/post")
 	public PostDTO insert(@RequestBody PostDTO dto) {
+		//return dto;
 		return postService.insert(dto);
 	}
 	
