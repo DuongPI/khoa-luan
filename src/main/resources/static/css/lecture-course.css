@@ -5,6 +5,16 @@
 .course-progress {
     text-align: center;
 }
+.display-none{
+    display: none;
+}
+.button-home button {
+    width: 100%;
+    height: 50px;
+    border: 1px solid white;
+    background-color: darkcyan;
+    color: white !important;
+}
 
 .menu-list-section h5 {
     padding: 10px 16px;

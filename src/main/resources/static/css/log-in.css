@@ -36,7 +36,7 @@ h1.title-form {
 h2.title-form {
     text-align: center;
 }
-input#username,input#password,input#User {
+input#username,input#password,input#email,input#passwordConfirm {
     padding: 25px 16px;
 }
 .red{

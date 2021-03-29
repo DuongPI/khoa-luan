@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tienganhmienphi.com.backend.Springboot.dto.LectureDTO;
+import tienganhmienphi.com.backend.Springboot.dto.LectureFinish;
+import tienganhmienphi.com.backend.Springboot.service.LectureFinishService;
 import tienganhmienphi.com.backend.Springboot.service.LectureService;
 
 @RestController
 public class LectureAPI {
 	@Autowired
 	private LectureService lectureService;
-	
+
+	@Autowired
+	private LectureFinishService lectureFinishService;
+
 	@PostMapping("/api/v1/lecture")
 	public LectureDTO insert(@RequestBody LectureDTO lectureDTO) {
 		return lectureService.insert(lectureDTO);
@@ -31,5 +36,10 @@ public class LectureAPI {
 	public ResponseEntity<Void> delete(@PathVariable(required = true) String id) {
 		lectureService.delete(Long.parseLong(id));
 		return ResponseEntity.noContent().build();
+	}
+	@PostMapping("/api/v1/lecture/finish")
+	public LectureFinish finishLecture(@RequestBody LectureFinish lectureFinish){
+
+		return lectureFinishService.insert(lectureFinish);
 	}
 }

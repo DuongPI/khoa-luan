@@ -63,24 +63,6 @@ $(document).on('click', '#modal .save', function () {
                     window.location.replace('/quan-tri/the-loai');
                 })
 
-            // $.ajax({
-            //     url: '/major/update',
-            //     type: "PUT",
-            //     contentType: 'text/html;charset=UTF-8',
-            //     dataType: "text/html",
-            //     encoding: "UTF-8",
-            //     data: {
-            //         major
-            //     },
-            //     success: function (data) {
-            //         // some task
-            //         window.location.replace('/major');
-            //     }
-            //     , fail: function () {
-            //         // some task
-            //     }
-            // })
-
         }
     }
     else {

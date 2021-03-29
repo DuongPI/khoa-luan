@@ -29,7 +29,6 @@ public class ChapterServiceImpl implements ChapterService{
 	private ChapterConverter chapterConverter;
 	@Override
 	public List<ChapterDTO> findAll() {
-		// TODO Auto-generated method stub
 		List<ChapterEntity> entities = chapterRepository.findAll();
 		List<ChapterDTO> dtos = new ArrayList<>();
 		for(ChapterEntity entity : entities) {
@@ -61,19 +60,16 @@ public class ChapterServiceImpl implements ChapterService{
 	@Override
 	@Transactional
 	public void delete(long id) {
-		// TODO Auto-generated method stub
 		chapterRepository.deleteById(id);
 		
 	}
 
 	@Override
 	public List<ChapterEntity> findAllByCourse(String name) {
-		// TODO Auto-generated method stub
 		List<CourseEntity> entities = courseRepository.findAll();
 		long id = 0;
 		for(CourseEntity entity: entities) {
-			if (name.equals(coverToString.covertToStringUrl(entity.getCourseName())))
-			{
+			if (name.equals(coverToString.covertToStringUrl(entity.getCourseName()))) {
 				id = entity.getId();
 				break;
 			}

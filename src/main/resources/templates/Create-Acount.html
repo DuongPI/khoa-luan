@@ -32,8 +32,8 @@
             <nav class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-6">
                 <div class="wrap-menu">
                     <ul class="menu" >
-                        <li class="level_1" ><a href="/dang-ky" title="">Đăng ký</a></li>
-                        <li class="level_1" ><a href="/dang-nhap" title="">Đăng nhập</a></li>
+                        <li class="level_1" ><a th:href="@{/dang-ky}" title="">Đăng ký</a></li>
+                        <li class="level_1" ><a a th:href="@{/dang-nhap}" title="">Đăng nhập</a></li>
                         <li class="level_1" ><a href="/lien-he" title="">Liên hệ</a></li>
                         <li class="level_1" >
                             <a href="#">
@@ -70,26 +70,47 @@
         <div class="row">
             <div class="content col-xl-8 col-lg-8 col-md-8 col-sm-8" style="margin: 150px auto;">
                 <h1 class="title-form">Đăng ký tài khoản</h1>
-                <form>
+                <div class="alert alert-danger" th:if ="${param.error}">
+                    Email đã tồn tại.
+                </div>
+                <form action="/dang-ky" method="post" th:object="${form}">
                     <div class="form-group" style="margin-bottom: 30px;">
-                        <label for="UserName">Tên đăng nhập<span class="red">*</span></label>
-                        <input type="email" class="form-control" id="User" aria-describedby="emailHelp" placeholder="Tên">
+                        <label for="email">Email<span class="red">*</span></label>
+                        <input type="email" name="email" class="form-control" id="email"
+                               placeholder="Email" th:field="*{email}">
+                        <div class="alert alert-danger"
+                             th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                            Indicates a dangerous or potentially negative action.
+                        </div>
+
                     </div>
                     <div class="form-group" style="margin-bottom: 30px;">
-                        <label for="UserName">Email<span class="red">*</span></label>
-                        <input type="email" class="form-control" id="UserName" aria-describedby="emailHelp" placeholder="Email">
-                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        <label for="username">Tên đăng nhập<span class="red">*</span></label>
+                        <input type="text" class="form-control" name="username" id="username"
+                               placeholder="Tên" th:field="*{username}">
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" >
+                            Indicates a dangerous or potentially negative action.
+                        </div>
                     </div>
                     <div class="form-group" style="margin-bottom: 30px;">
-                        <label for="Password">Mật Khẩu <span class="red">*</span></label>
-                        <input type="password" class="form-control" id="Password" placeholder="Mật khẩu">
+                        <label for="password">Mật Khẩu <span class="red">*</span></label>
+                        <input type="password" class="form-control" name="password"
+                               id="password" placeholder="Mật khẩu" th:field="*{password}">
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                            Indicates a dangerous or potentially negative action.
+                        </div>
                     </div>
                     <div class="form-group" style="margin-bottom: 30px;">
-                        <label for="Password">Xác nhận mật Khẩu <span class="red">*</span></label>
-                        <input type="password" class="form-control" id="Password" placeholder="Xác nhận mật khẩu">
+                        <label for="passwordConfirm">Xác nhận mật Khẩu <span class="red">*</span></label>
+                        <input type="password" class="form-control" name="_Password"
+                               id="passwordConfirm" placeholder="Xác nhận mật khẩu" th:field="*{passwordConfirm}">
+                        <div class="alert alert-danger"
+                             th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}">
+                            Indicates a dangerous or potentially negative action.
+                        </div>
                     </div>
                     <div class="form-submit" style="margin-bottom: 30px;">   
-                            <button type="submit" class="btn-login">Đăng ký</button>
+                            <button class="btn-login">Đăng ký</button>
                             <a href="#">Hoặc đã có một tài khoản</a>
                     </div>
                 </form>
@@ -138,6 +159,10 @@
         </div>
     </section>
     <!-- ./Footer -->
+    <script>
+
+    </script>
     <script src="js/common.js"> </script>
+    <script src="js/createacount.js"> </script>
 </body>
 </html>

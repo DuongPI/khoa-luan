@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/lecture-course.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <!-- Bootstrap CSS --> 
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
-    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}"
+          rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
     <script th:src="@{/js/popper.min.js}"></script>
     <title>Khóa học lập trình java căn bản</title>
 </head>
 <body>
+
     <div class="course-container">
         <div class="container-fluid">
             <div class="lecture-sidebar-left">
                 <div class="narbar-menu">
+                    <div class="button-home">
+                        <button><a th:href="@{/trang-chu}" style="color: white">Về Trang chủ</a></button>
+                    </div>
                     <div class="title-name-course">
-                        <h4>Khoá học lập trình java căn bản</h4>
+                        <h4 th:text="${course.courseName}"></h4>
                     </div>
                     <div class="menu-list">
                         <div class="course-progress" style="margin: 20px 0px;">
@@ -30,124 +36,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="menu-list-section">
-                            <h5>Giới thiệu phương pháp học online</h5>
-                            <a href="#" class="lecture">
+                        <div class="menu-list-section" th:each="item : ${chapters}">
+                            <h5 th:text="${item.chapterName}">Giới thiệu phương pháp học online</h5>
+                            <a th:href="@{'/learn/' + ${coursename} +'/'+${u.id} }" class="lecture" th:each="u : ${item.lectures}">
                                 <div class="title-lecture">
                                     <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-list-section">
-                            <h5>Giới thiệu phương pháp học online</h5>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-list-section">
-                            <h5>Giới thiệu phương pháp học online</h5>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                        </div>
-                        <div class="menu-list-section">
-                            <h5>Giới thiệu phương pháp học online</h5>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a><a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
-                                </div>
-                            </a>
-                            <a href="#" class="lecture">
-                                <div class="title-lecture">
-                                    <i class="fa fa-youtube-play"></i>
-                                    Giới thiệu phương pháp học online
+                                    <th:block th:if>
+                                    <span th:text="${u.lectureName}"
+                                    >Giới thiệu phương pháp học online</span>
+                                    </th:block>
                                 </div>
                             </a>
                         </div>
@@ -158,22 +55,29 @@
             <div class="lecture-sidebar-right" style="float: right;">
                 <div class="lecture-title-name">
                     <i class="fa fa-youtube-play"></i>
-                    <h4>Giới thiệu khóa học java cơ bản</h4>
+                    <h4 th:text="${lecture.lectureName}">Giới thiệu khóa học java cơ bản</h4>
                 </div>
                 <div class="row">
-                    <div class="video-container">
+                    <div class="video-container" th:utext="${lecture.lectureVideo}">
                         <iframe src="https://www.youtube.com/embed/d8heRxW2KVI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="button-finish text-center"><button type="button"> <i class="fa fa-check"></i>Hoàn thành</button></div>
+                <div class="button-finish text-center">
+                    <input type="hidden" id="lectureID" th:value="${lecture.id}">
+                    <input type="hidden" id="courseID" th:value="${course.id}">
+                    <div id="username" style="display: none;" sec:authentication="name"></div>
+                    <button type="button" id="_hoanthanh"
+                            th:class="${ischeck} ? 'display-none' : ''">
+                    <i class="fa fa-check"></i>Hoàn thành</button>'
+                </div>
                 <div class="directional">
                     <div class="left-direc">
                         <p>Prev</p>
-                        <a href="#">Bài giảng 1</a>
+                        <a href="#">Bài giảng trước</a>
                     </div>
                     <div class="right-direc float-right text-right">
                         <p>Next</p>
-                        <a href="#">Bài giảng 2</a>
+                        <a href="#">Bài giảng sau</a>
                     </div>
                 </div>
                 <div class="comment-container">
@@ -189,7 +93,8 @@
             </div>
         </div>
     </div>
-
-    <script src="js/common.js"> </script>
+    <script th:src="@{/js/Scripts/common/ajaxJson.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/common.js}"> </script>
 </body>
 </html>

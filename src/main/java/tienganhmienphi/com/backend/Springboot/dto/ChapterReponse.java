@@ -1,0 +1,40 @@
+package tienganhmienphi.com.backend.Springboot.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ChapterReponse {
+    private List<LectureDTO> lectureDTOList = new ArrayList<>();
+    private Long id;
+
+    public List<LectureDTO> getLectureDTOList() {
+        return lectureDTOList;
+    }
+
+    public void setLectureDTOList(List<LectureDTO> lectureDTOList) {
+        this.lectureDTOList = lectureDTOList;
+    }
+
+    private String chapterName;
+    private String course;
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getChapterName() {
+        return chapterName;
+    }
+    public void setChapterName(String chapterName) {
+        this.chapterName = chapterName;
+    }
+    public String getCourse() {
+        return course;
+    }
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+
+}

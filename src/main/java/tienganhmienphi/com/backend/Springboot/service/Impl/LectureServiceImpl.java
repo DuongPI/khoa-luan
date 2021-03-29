@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 import tienganhmienphi.com.backend.Springboot.converter.LectureConverter;
 import tienganhmienphi.com.backend.Springboot.dto.LectureDTO;
+import tienganhmienphi.com.backend.Springboot.dto.LectureFinish;
 import tienganhmienphi.com.backend.Springboot.entity.LectureEntity;
+import tienganhmienphi.com.backend.Springboot.entity.UserEntity;
+import tienganhmienphi.com.backend.Springboot.repository.LearnCourseReporitory;
 import tienganhmienphi.com.backend.Springboot.repository.LectureRepository;
 import tienganhmienphi.com.backend.Springboot.service.LectureService;
 
@@ -22,6 +25,8 @@ public class LectureServiceImpl implements LectureService {
 	
 	@Autowired
 	private LectureConverter lectureConverter;
+	@Autowired
+	private LearnCourseReporitory learnCourseReporitory;
 	
 	@Override
 	public List<LectureDTO> findAll() {
@@ -55,5 +60,12 @@ public class LectureServiceImpl implements LectureService {
 		lectureRepository.deleteById(id);
 		
 	}
-	
+
+	@Override
+	public LectureDTO findById(long id) {
+		LectureEntity entity = lectureRepository.findById(id).get();
+		return lectureConverter.toDTO(entity);
+	}
+
+
 }

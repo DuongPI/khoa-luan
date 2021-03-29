@@ -1,22 +1,26 @@
 package tienganhmienphi.com.backend.Springboot.APi;
 
-import java.util.Base64;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import tienganhmienphi.com.backend.Springboot.dto.CourseDTO;
 import tienganhmienphi.com.backend.Springboot.dto.UploadFileDTO;
+import tienganhmienphi.com.backend.Springboot.dto.UserDTO;
+import tienganhmienphi.com.backend.Springboot.entity.UserEntity;
+import tienganhmienphi.com.backend.Springboot.repository.UserRepository;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
+
+import java.util.Base64;
 
 @RestController
 public class ApiController {
 	@Autowired
 	private UploadFileUtils uploadFileUtlis;
+	@Autowired
+	private UserRepository userRepository;
 	
 	@PostMapping("/testbase64")
 	public ResponseEntity<Void> ApiLecture(@RequestBody UploadFileDTO uploadFileDTO) {
@@ -30,6 +34,10 @@ public class ApiController {
 		CourseDTO dto = new CourseDTO();
 		dto.setImagetobase64(uploadFileUtlis.read("/thumbnail/hello.png"));
 		dto.setImageName("hello.png");
+		return dto;
+	}
+	@PostMapping("/api/v1/user")
+	public UserDTO ApiUser(@RequestBody UserDTO dto){
 		return dto;
 	}
 }

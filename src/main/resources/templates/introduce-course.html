@@ -85,7 +85,7 @@
             <div class="wrap-content-course">
                 <div class="section" th:each="item: ${chapters}">
                     <h4 class="title-section" th:text = "${item.chapterName}">Giới thiệu</h4>
-                    <a th:href="@{'/learn/' + ${name} +'/'+ ${item.id} }" class="lecture" th:each="u: ${item.lectures}" >
+                    <a th:href="@{'/learn/' + ${name} +'/'+ ${u.id} }" class="lecture" th:each="u: ${item.lectures}" >
                         <div class="title-lecture" >
                             <i class="fa fa-youtube-play"></i>
                             <span th:text= "${u.lectureName}"></span>
