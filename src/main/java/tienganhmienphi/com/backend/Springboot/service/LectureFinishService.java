@@ -8,5 +8,7 @@ import java.util.List;
 public interface LectureFinishService {
     LectureFinish insert(LectureFinish lectureFinish);
     List<LearnCourse> findAll();
-    boolean checkId(long id);
+    boolean checkId(long id,Long userID);
+    int count(long userID,long courseID);
+    double progree(String courseName,String userid);
 }

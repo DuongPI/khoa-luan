@@ -85,7 +85,16 @@
             <div class="wrap-content-course">
                 <div class="section" th:each="item: ${chapters}">
                     <h4 class="title-section" th:text = "${item.chapterName}">Giới thiệu</h4>
-                    <a th:href="@{'/learn/' + ${name} +'/'+ ${u.id} }" class="lecture" th:each="u: ${item.lectures}" >
+                    <a sec:authorize="isAuthenticated()" th:href="@{'/learn/' + ${name} +'/'+${#authentication.principal.Id}+'/'+ ${u.id} }" class="lecture" th:each="u: ${item.lectures}" >
+                        <div class="title-lecture" >
+                            <i class="fa fa-youtube-play"></i>
+                            <span th:text= "${u.lectureName}"></span>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-preview">Xem ngay</button>
+                        </div>
+                    </a>
+                    <a sec:authorize="isAnonymous()" th:href="@{'/learn/' + ${name} +'/'+${#authentication.principal}+'/'+ ${u.id} }" class="lecture" th:each="u: ${item.lectures}" >
                         <div class="title-lecture" >
                             <i class="fa fa-youtube-play"></i>
                             <span th:text= "${u.lectureName}"></span>

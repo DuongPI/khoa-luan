@@ -111,7 +111,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </a>
                 </div>
             </div>
- 
+            <button id="testapi">click</button>
             <div class="button-course">
                 <button class="btn-course"><a href="/khoa-hoc">Xem tất cả các khóa học</a></button>
             </div>    
@@ -240,6 +240,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
         </div>
     </section>
     <!-- ./Footer -->
-    <script src="js/common.js"> </script>
+    <script th:src="@{/js/Scripts/common/ajaxJson.js}"></script>
+    <script th:src="@{/js/common.js}"> </script>
 </body>
 </html>

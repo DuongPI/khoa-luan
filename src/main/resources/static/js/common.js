@@ -4,7 +4,13 @@ $(function(){
             window.location.replace('/khoa-hoc');
         else window.location.replace('/khoa-hoc/the-loai/'+$('#select_category').val());
     });
-
+    $('#testapi').click(function(){
+        ajaxJSON.post('/api/v1/user', {}, true,
+            function (data) {
+                console.log("here")
+                console.log(data);
+            })
+    });
 
 
 });
@@ -12,7 +18,7 @@ $('#_hoanthanh').click(function(){
     let learn = {
         lectureID : null,
         courseID: null,
-        username: null
+        userID: null
     };
     learn["lectureID"] = $('#lectureID').val();
     learn["courseID"] = $('#courseID').val();
@@ -24,3 +30,4 @@ $('#_hoanthanh').click(function(){
             location.reload();
         })
 });
+

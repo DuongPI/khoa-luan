@@ -11,6 +11,7 @@ import tienganhmienphi.com.backend.Springboot.dto.UploadFileDTO;
 import tienganhmienphi.com.backend.Springboot.dto.UserDTO;
 import tienganhmienphi.com.backend.Springboot.entity.UserEntity;
 import tienganhmienphi.com.backend.Springboot.repository.UserRepository;
+import tienganhmienphi.com.backend.Springboot.service.ChapterService;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
 
 import java.util.Base64;
@@ -21,6 +22,8 @@ public class ApiController {
 	private UploadFileUtils uploadFileUtlis;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ChapterService chapterService;
 	
 	@PostMapping("/testbase64")
 	public ResponseEntity<Void> ApiLecture(@RequestBody UploadFileDTO uploadFileDTO) {
@@ -37,7 +40,8 @@ public class ApiController {
 		return dto;
 	}
 	@PostMapping("/api/v1/user")
-	public UserDTO ApiUser(@RequestBody UserDTO dto){
-		return dto;
+	public ResponseEntity<?> ApiUser(@RequestBody UserDTO dto) {
+		return ResponseEntity.ok(chapterService.
+				_findAllByCourse("giao-tiep-tieng-anh-chuyen-nghiep-cho-nguoi-lam-kinh-doanh","2"));
 	}
 }

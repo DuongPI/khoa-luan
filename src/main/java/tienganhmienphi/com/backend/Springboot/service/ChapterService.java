@@ -3,6 +3,7 @@ package tienganhmienphi.com.backend.Springboot.service;
 import java.util.List;
 
 import tienganhmienphi.com.backend.Springboot.dto.ChapterDTO;
+import tienganhmienphi.com.backend.Springboot.dto.ChapterReponse;
 import tienganhmienphi.com.backend.Springboot.entity.ChapterEntity;
 
 public interface ChapterService {
@@ -11,4 +12,5 @@ public interface ChapterService {
 	public ChapterDTO update(ChapterDTO dto);
 	void delete(long id);
 	public List<ChapterEntity> findAllByCourse(String name);
+	public List<ChapterReponse> _findAllByCourse(String name,String userId);
 }

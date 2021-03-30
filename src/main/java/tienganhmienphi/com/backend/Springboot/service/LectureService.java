@@ -11,4 +11,5 @@ public interface LectureService {
 	LectureDTO update(LectureDTO dto);
 	void delete(long id);
 	LectureDTO findById(long id);
+
 }
