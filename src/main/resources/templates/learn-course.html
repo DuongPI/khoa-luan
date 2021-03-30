@@ -41,10 +41,8 @@
                             <a th:href="@{'/learn/' + ${coursename} +'/'+${u.id} }" class="lecture" th:each="u : ${item.lectures}">
                                 <div class="title-lecture">
                                     <i class="fa fa-youtube-play"></i>
-                                    <th:block th:if>
                                     <span th:text="${u.lectureName}"
                                     >Giới thiệu phương pháp học online</span>
-                                    </th:block>
                                 </div>
                             </a>
                         </div>
