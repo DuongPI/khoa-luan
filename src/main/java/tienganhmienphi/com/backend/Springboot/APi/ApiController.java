@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import tienganhmienphi.com.backend.Springboot.dto.CourseDTO;
 import tienganhmienphi.com.backend.Springboot.dto.UploadFileDTO;
 import tienganhmienphi.com.backend.Springboot.dto.UserDTO;
+import tienganhmienphi.com.backend.Springboot.entity.TestEntity;
 import tienganhmienphi.com.backend.Springboot.entity.UserEntity;
 import tienganhmienphi.com.backend.Springboot.repository.UserRepository;
 import tienganhmienphi.com.backend.Springboot.service.ChapterService;
+import tienganhmienphi.com.backend.Springboot.service.TestService;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
 
 import java.util.Base64;
@@ -24,7 +26,8 @@ public class ApiController {
 	private UserRepository userRepository;
 	@Autowired
 	private ChapterService chapterService;
-	
+	@Autowired
+	private TestService testService;
 	@PostMapping("/testbase64")
 	public ResponseEntity<Void> ApiLecture(@RequestBody UploadFileDTO uploadFileDTO) {
 		byte[] decodeBase64 = Base64.getDecoder().decode(uploadFileDTO.getBase64().split(",")[1]);
@@ -40,8 +43,7 @@ public class ApiController {
 		return dto;
 	}
 	@PostMapping("/api/v1/user")
-	public ResponseEntity<?> ApiUser(@RequestBody UserDTO dto) {
-		return ResponseEntity.ok(chapterService.
-				_findAllByCourse("giao-tiep-tieng-anh-chuyen-nghiep-cho-nguoi-lam-kinh-doanh","2"));
+	public ResponseEntity<?> ApiUser() {
+		return ResponseEntity.ok(testService.findById(1));
 	}
 }
