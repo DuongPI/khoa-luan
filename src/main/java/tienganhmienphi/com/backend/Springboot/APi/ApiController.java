@@ -16,7 +16,9 @@ import tienganhmienphi.com.backend.Springboot.service.ChapterService;
 import tienganhmienphi.com.backend.Springboot.service.TestService;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
 
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 @RestController
 public class ApiController {
@@ -44,6 +46,13 @@ public class ApiController {
 	}
 	@PostMapping("/api/v1/user")
 	public ResponseEntity<?> ApiUser() {
-		return ResponseEntity.ok(testService.findById(1));
+		List<Long> list = new ArrayList<>();
+		list.add(1l);
+		list.add(2l);
+		list.add(null);
+		list.add(null);
+		float _a =  (float)testService.CountNumberOfDuplicate(list,1l);
+		float a = (((float)testService.CountNumberOfDuplicate(list,1l))/(int)4 *1000)/100;
+		return ResponseEntity.ok(a);
 	}
 }

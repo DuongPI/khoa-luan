@@ -1,0 +1,35 @@
+.content-right {
+    position: fixed;
+    right: 0px;
+    width: 20%;
+    background-color: antiquewhite;
+}
+.content-left {
+    float: left;
+    width: 80%;
+    background-color:powderblue;
+}
+.answer {
+    text-align: center;
+    margin: 10px 5px;
+}
+.button_out button {
+    width: 100%;
+    padding: 15px 10px;
+    border-radius: 5px 0px 0px 5px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: powderblue;
+}
+.title_list {
+    text-align: center;
+}
+.content-left form {
+
+    margin-right: 40px;
+    margin-left: 40px;
+    font-size: 18px;
+}
+h1.title_page {
+    text-align: center;
+}

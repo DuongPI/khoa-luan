@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					"/favicon.ico","/**/*.jpg","/**/*.png",
 					"/lien-he","/ve-chung-toi","/bai-viet","/bai-viet/**",
 					"/dang-nhap","/dang-ky",
-					"/khoa-hoc","/khoa-hoc/**","/**/*.html", "/**/*.css",
+					"/khoa-hoc","/khoa-hoc/**","/**/*.html", "/**/*.css","/kiem-tra",
 					"/**/*.js").permitAll()
 			.antMatchers(HttpMethod.POST, "/api/v1/user","/api/v1/lecture/finish","/dang-ky").permitAll()
 			.antMatchers("/quan-tri/**","/api/v1/**").hasAuthority("ADMIN")
