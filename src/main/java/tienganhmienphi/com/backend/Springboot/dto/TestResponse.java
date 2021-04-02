@@ -11,5 +11,6 @@ import java.util.List;
 public class TestResponse {
     private Long id;
     private String name;
+    private String password;
     private List<QuizzDTO> quizzs = new ArrayList<>();
 }

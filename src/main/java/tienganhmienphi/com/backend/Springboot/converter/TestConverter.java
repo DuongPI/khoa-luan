@@ -17,6 +17,7 @@ public class TestConverter {
         TestResponse testResponse = new TestResponse();
         testResponse.setId(optional.getId());
         testResponse.setName(optional.getTestName());
+        testResponse.setPassword(optional.getPassword());
         List<QuizzDTO> quizzDTOS = new ArrayList<>();
         for(QuizzEntity quizzEntity:optional.getQuizzs()){
             QuizzDTO quizzDTO = new QuizzDTO();

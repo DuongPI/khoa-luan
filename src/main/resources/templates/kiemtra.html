@@ -2,23 +2,31 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/kiemtra.css">
-
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/kiemtra.css}">
     <title>Title</title>
 </head>
 <body>
 <div class="course-container">
     <div class="container-fluid">
         <div class="content-left" >
-            <h1 class="title_page">kiểm tra</h1>
-            <form action="#" method="get" id="myForm">
+            <header class="header_top">
+                <img th:src="@{/img/logo.png}" alt="">
+                <div class="header_content">
+                    <p class="danger">Chú ý:Trong quá trình thi yêu càu mọi người bật Camera</p>
+                    <P class="danger">Làm bài nghiêm túc để có thể đánh giá bản thân đúng nhất</P>
+                    <p>Người dự thi: <span class="username">Name</span></p>
+                </div>
+            </header>
+            <h1 class="title_page" th:text="${test.name}">kiểm tra</h1>
+            <div style="margin-right: 40px;margin-left: 40px;">
                 <div class="form-group" th:each="item,index: ${test.quizzs}">
-                    <div class="question" th:text="${item.question}"> Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Dolorem, in?</div>
+                    <div class="question" th:text="${index.count+ '. ' +item.question}"> Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Dolorem, in?</div>
                     <div class="form-check-inline" th:each="u : ${item.answers}">
                         <label class="form-check-label">
                             <input type="radio" class="form-check-input" th:value="${u.id}" th:name="${index.index}">
@@ -28,35 +36,62 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary" id="submit">Nộp Bài</button>
                 </div>
+            </div>
 
-            </form>
         </div>
         <div class="content-right" >
+
+            <div class="box-time">Thời Gian: <span id="time">00:05</span> minutes!</div>
             <div class="button_out">
-                <button class="btn">Rời khỏi phòng thi</button>
+                <button class="btn" data-toggle="modal" data-target="#modal-delete">Rời khỏi phòng thi</button>
             </div>
-            <!-- <div class="narbar-right">
-                <div class="title_list">
-                    <h4>Đáp án của bạn</h4>
-                </div>
-                <div class="list-answer">
-                    <div class="answer">
-                        1. <span>A</span>
-                    </div>
-                    <div class="answer">
-                        1. <span>A</span>
-                    </div>
-                    <div class="answer">
-                        1. <span>A</span>
-                    </div>
-                </div>
-            </div> -->
+
 
         </div>
     </div>
 </div>
+<div style="clear: both"></div>
+<div class="modal fade" id="modal-delete"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Rời phòng thi</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Bạn có muốn rời phòng thi không?</h4>
+                <p>bài thi này bạn sẽ không được tính điểm.</p>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" id="thoat"
+                        class="btn btn-outline pull-left save" data-dismiss="modal">Đồng ý
+                    </button>
+                <button type="button" class="btn btn-outline"
+                        data-dismiss="modal">Không</button>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script crossorigin th:src="@{https://unpkg.com/@daily-co/daily-js}"></script>
+<script>
+    callFrame = window.DailyIframe.createFrame({
+        showLeaveButton: false,
+        iframeStyle: {
+            position: 'fixed',
+            width: '21%',
+            height: '50%',
+            top:'-35px',
+            right: '0'
+        }
+    });
+    callFrame.join({ url: 'https://your-domain.daily.co/testroom' })
+</script>
+<script th:src="@{/js/Scripts/common/ajaxJson.js}"></script>
 <script th:src="@{/js/jquery.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/kiemtra.js}"> </script>

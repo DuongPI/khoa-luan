@@ -1,0 +1,31 @@
+.element_test {
+    margin: 10px 20px;
+    background: whitesmoke;
+    padding: 10px 16px;
+    border-radius: 5px;
+    border: 1px solid navajowhite;
+    margin-bottom: 15px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.element_test h4 {
+    margin-bottom: 0px;
+}
+.element_test a {
+    color: black;
+}
+
+.element_test p {
+    margin-bottom: 0px;
+}
+.element_test:hover {
+    box-shadow: 0 3px 3px #dedada;
+}
+.content{
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+.element_test button {
+    padding: 10px 16px;
+    margin-top: 3px;
+}

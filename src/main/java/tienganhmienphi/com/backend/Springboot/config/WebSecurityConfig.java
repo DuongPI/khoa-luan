@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					"/dang-nhap","/dang-ky",
 					"/khoa-hoc","/khoa-hoc/**","/**/*.html", "/**/*.css","/kiem-tra",
 					"/**/*.js").permitAll()
-			.antMatchers(HttpMethod.POST, "/api/v1/user","/api/v1/lecture/finish","/dang-ky").permitAll()
+			.antMatchers(HttpMethod.POST, "/api/v1/user","/api/v1/test/{id}","/api/v1/lecture/finish","/dang-ky").permitAll()
 			.antMatchers("/quan-tri/**","/api/v1/**").hasAuthority("ADMIN")
 			.anyRequest().authenticated()
 			.and()

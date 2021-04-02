@@ -10,6 +10,7 @@ import tienganhmienphi.com.backend.Springboot.service.TestService;
 import tienganhmienphi.com.backend.Springboot.utils.Common;
 import tienganhmienphi.com.backend.Springboot.utils.CountTheNumberOfDuplicateElements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,6 +28,20 @@ public class TestServiceImpl implements TestService {
         TestEntity optional = testRepository.findById(id).get();
         TestResponse testResponse = testConverter.toDTO(optional);
         return testResponse;
+    }
+
+    @Override
+    public List<TestResponse> findAll() {
+        List<TestEntity> testEntities = testRepository.findAll();
+        List<TestResponse> testResponses = new ArrayList<>();
+
+        for(TestEntity entity: testEntities){
+            TestResponse testResponse = new TestResponse();
+            testResponse.setId(entity.getId());
+            testResponse.setName(entity.getTestName());
+            testResponses.add(testResponse);
+        }
+        return testResponses;
     }
 
     @Override

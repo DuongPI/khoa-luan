@@ -18,6 +18,8 @@ public class TestEntity {
     private Long id;
     @Column
     private String testName;
+    @Column
+    private String password;
     @OneToMany(mappedBy = "test", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<QuizzEntity> quizzs = new ArrayList<>();
 }
