@@ -17,43 +17,34 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <body>
     <header id="header" class="menu-top container-fluid">
         <div class="row">
-            <div class="logo col-xl-2 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="/" title="Trang chủ"><img th:src="@{/img/logo.png}" alt="logo"></a></div>
-            <div class="search col-xl-3">
-                <form class="form" >
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="display: inline-block;height: 45px;padding-left: 20px; border-radius: 40px;" id="mysearch">
-                        <div class="input-group-addon" style="margin-left: -50px; z-index: 3; border-radius: 40px; background-color: transparent; border:none; width: 11%">
-                            <button class="btn btn-warning btn-sm" type="submit" style="border-radius: 20px; margin-top: 8px" id="search-btn"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <nav class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-6">
+            <div class="logo col-xl-3 col-lg-3 col-md-3 col-sm-3 col-6 "> <a href="/" title="Trang chủ"><img th:src="@{/img/logo.png}" alt="logo"></a></div>
+
+            <nav class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-6">
                 <div class="wrap-menu">
                     <ul class="menu" >
                         <li class="level_1" sec:authorize="isAuthenticated()">
                             <a href="#" sec:authentication="principal.FullName">
                                 username </a>
                             <ul class="menu_level_2">
+                                <li class="level_2"><a href="/tai-khoan" title="">Tài Khoản</a></li>
                                 <li class="level_2"><a href="/dang-nhap?logout" title="">Đăng Xuất</a></li>
-
                             </ul>
-
                         </li>
-                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-ky" title="">Đăng ký</a></li>
-                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-nhap" title="">Đăng nhập</a></li>
-                        <li class="level_1" ><a href="/lien-he" title="">Liên hệ</a></li>
+                        <li class="level_1" sec:authorize="isAuthenticated()"><a href="/kiem-tra-online" title="">Thi Online</a></li>
+                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-ky" title="">Đăng Ký</a></li>
+                        <li class="level_1" sec:authorize="isAnonymous()"><a href="/dang-nhap" title="">Đăng Nhập</a></li>
+                        <li class="level_1" ><a href="/lien-he" title="">Liên Hệ</a></li>
                         <li class="level_1" >
                             <a href="#">
                                 Trang <img src="img/right.png"></a>
                             <ul class="menu_level_2">
-                                <li class="level_2"><a href="/bai-viet" title="">Bài viết</a></li>
-                                <li class="level_2"><a href="/ve-chung-toi" title="">Về chúng tôi</a></li>
+                                <li class="level_2"><a href="/khoa-hoc" title="">Khóa Học</a></li>
+                                <li class="level_2"><a href="/bai-viet" title="">Bài Viết</a></li>
+                                <li class="level_2"><a href="/ve-chung-toi" title="">Về Chúng Tôi</a></li>
                             </ul>
 
                         </li>
-                        <li class="level_1" ><a href="/khoa-hoc" title="">Khóa học</a></li>
-                        <li class="level_1" ><a href="/" title="">Trang chủ</a></li>
+                        <li class="level_1" ><a href="/" title="">Trang Chủ</a></li>
                     </ul>
                     <button class="button-menu"> 
                         <div class="icon"></div>

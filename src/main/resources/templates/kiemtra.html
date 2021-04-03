@@ -20,14 +20,14 @@
                 <div class="header_content">
                     <p class="danger">Chú ý:Trong quá trình thi yêu càu mọi người bật Camera</p>
                     <P class="danger">Làm bài nghiêm túc để có thể đánh giá bản thân đúng nhất</P>
-                    <p>Người dự thi: <span class="username">Name</span></p>
+                    <p>Người dự thi: <span class="username" sec:authentication="principal.FullName">Name</span></p>
                 </div>
             </header>
             <h1 class="title_page" th:text="${test.name}">kiểm tra</h1>
             <div style="margin-right: 40px;margin-left: 40px;">
                 <div class="form-group" th:each="item,index: ${test.quizzs}">
                     <div class="question" th:text="${index.count+ '. ' +item.question}"> Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Dolorem, in?</div>
-                    <div class="form-check-inline" th:each="u : ${item.answers}">
+                    <div class="form-check" th:each="u : ${item.answers}">
                         <label class="form-check-label">
                             <input type="radio" class="form-check-input" th:value="${u.id}" th:name="${index.index}">
                             <span th:text="${u.content}">Answer</span>
@@ -36,7 +36,8 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-primary" id="submit">Nộp Bài</button>
+                    <button class="btn btn-primary"  data-toggle="modal" data-target="#modal-submit"
+                            id="submit">Nộp Bài</button>
                 </div>
             </div>
 
@@ -66,9 +67,9 @@
             </div>
             <div class="modal-footer">
                     <button type="button" id="thoat"
-                        class="btn btn-outline pull-left save" data-dismiss="modal">Đồng ý
+                        class="btn btn-outline pull-left save btn-info" data-dismiss="modal">Đồng ý
                     </button>
-                <button type="button" class="btn btn-outline"
+                <button type="button" class="btn btn-outline btn-danger"
                         data-dismiss="modal">Không</button>
             </div>
 
@@ -77,6 +78,30 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+<div class="modal fade" id="modal-submit"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Nộp bài thi</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Bạn có muốn nộp bài không?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="_submit"
+                        class="btn btn-outline pull-left save btn-info" data-dismiss="modal">Đồng ý
+                </button>
+                <button type="button" class="btn btn-outline btn-danger"
+                        data-dismiss="modal">Không</button>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
 <script crossorigin th:src="@{https://unpkg.com/@daily-co/daily-js}"></script>
 <script>
     callFrame = window.DailyIframe.createFrame({

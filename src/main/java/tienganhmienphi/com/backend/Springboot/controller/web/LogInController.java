@@ -9,4 +9,8 @@ public class LogInController {
 	public String ShowLogIn() {
 		return "log-in";
 	}
+	@GetMapping("/tai-khoan")
+	public String ShowAcount() {
+		return "Acount";
+	}
 }

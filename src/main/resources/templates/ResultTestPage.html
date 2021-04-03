@@ -62,53 +62,15 @@
 <!-- /header -->
 <section class="title-page container-fluid" style="background-image: url('img/breadcrumb-bkg-1.jpg');">
     <div class="content-slide">
-        <h1>Các bài thi hiện có trên website</h1>
+        <h1>Kết quả bài thi</h1>
     </div>
 </section>
 <!-- content -->
 
 <section class="container content">
-    <h3>Các bài thi hiện tại:</h3>
-    <div class="row">
-        <div class="col-12">
-            <div class="element_test" th:each="item : ${tests}">
-                    <div class="float-left">
-                        <h4 th:text="${item.name}">Tiêu đề</h4>
-                        <p>Giám Sát phòng thi: Phạm Ích Dương</p>
-                    </div>
-                    <div class="float-right">
-                        <button class="btn btn-info" data-toggle="modal"
-                                data-target="#modal-check" id="th_gia" th:name = "${item.id}">Tham gia Ngay</button>
-                        <div class="modal fade modal-danger" id="modal-check"
-                             style="display: none;">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">MẬT kHẨU BÀI THI</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="text" class="form-control"
-                                               id="mk_test" placeholder="Mời bạn nhập mật khẩu của bài thi">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" id="button_check"
-                                                class="btn btn-outline btn-info pull-left save"  >Đồng
-                                            ý</button>
-                                        <button type="button" class="btn btn-outline btn-danger"
-                                                data-dismiss="modal">Đóng</button>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                    </div>
-            </div>
-
-
-        </div>
-    </div>
+    <h3>Kết quả thi của bạn</h3>
+    <p>Điểm: <span id="diem"></span>/10</p>
+    <a href="/"><button class="btn btn-info">Trang Chủ</button></a>
 </section>
 <!-- end content -->
 
@@ -152,7 +114,9 @@
     </div>
 </section>
 <!-- ./Footer -->
-<script th:src="@{/js/Scripts/common/ajaxJson.js}"></script>
+<script>
+    $('#diem').text(localStorage.getItem("result"));
+</script>
 <script src="js/common.js"> </script>
 <script src="js/TestPage.js"> </script>
 </body>

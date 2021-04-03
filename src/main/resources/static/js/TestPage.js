@@ -18,8 +18,9 @@ $(function(){
             success: function (data) {
                 console.log(data)
                 if(mk == data){
-                    alert("thành công  ");
+
                     window.location.replace('/kiem-tra/'+id);
+                    alert("thành công  ");
                 }
 
                 else
@@ -30,4 +31,3 @@ $(function(){
     });
 
 });
-console.log("zeze")
