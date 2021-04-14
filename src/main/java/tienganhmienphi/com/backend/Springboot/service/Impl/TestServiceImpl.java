@@ -34,11 +34,11 @@ public class TestServiceImpl implements TestService {
     public List<TestResponse> findAll() {
         List<TestEntity> testEntities = testRepository.findAll();
         List<TestResponse> testResponses = new ArrayList<>();
-
         for(TestEntity entity: testEntities){
             TestResponse testResponse = new TestResponse();
             testResponse.setId(entity.getId());
             testResponse.setName(entity.getTestName());
+            testResponse.setPassword(entity.getPassword());
             testResponses.add(testResponse);
         }
         return testResponses;

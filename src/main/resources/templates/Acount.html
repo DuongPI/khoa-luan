@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/introduce-course.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/introduce-course.css}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <script src="js/popper.min.js"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
     <title>Khóa học lập trình java căn bản</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
                         <a href="#" sec:authentication="principal.FullName">
                             username </a>
                         <ul class="menu_level_2">
-                            <li class="level_2"><a href="/tai-khoan" title="">Tài Khoản</a></li>
+                            <li class="level_2"><a th:href="@{'/tai-khoan/'+${#authentication.principal.Id}}" title="">Tài Khoản</a></li>
                             <li class="level_2"><a href="/dang-nhap?logout" title="">Đăng Xuất</a></li>
                         </ul>
                     </li>
@@ -36,7 +36,7 @@
                     <li class="level_1" ><a href="/lien-he" title="">Liên Hệ</a></li>
                     <li class="level_1" >
                         <a href="#">
-                            Trang <img src="img/right.png"></a>
+                            Trang <img th:src="@{/img/right.png}"></a>
                         <ul class="menu_level_2">
                             <li class="level_2"><a href="/khoa-hoc" title="">Khóa Học</a></li>
                             <li class="level_2"><a href="/bai-viet" title="">Bài Viết</a></li>
@@ -56,7 +56,7 @@
 
     </div>
 </header>
-<section class="title-page container-fluid" style="background-image: url('img/breadcrumb-bkg-1.jpg');">
+<section class="title-page container-fluid" th:style="'background-image:url('+ @{/img/breadcrumb-bkg-1.jpg}+');'">
     <div class="content-slide">
         <h1>Tài Khoản Của Tôi</h1>
     </div>
@@ -67,38 +67,36 @@
         <div class="col-8">
             <h3>Các khóa học bạn đang tham gia.</h3>
             <div class="row">
-                <div class="col-6">
+                <!--<div class="col-6" th:each="item : ${courses}">
+                    <img th:src="'data:image/png;base64,'+${item.imagetobase64}" style="max-width: 100%">
+                    <p th:text="${item.courseName}">Tên khóa học</p>
+                    <p th:text="${item.shortDescription}"></p>
+                </div>-->
+                <div class="col-6" th:each = "item:${courses}">
+                    <div class="course-element">
+                        <a th:href="@{'/khoa-hoc/'+${item.urlName}}">
+                            <div class="course-image" th:style="'background-image:url(data:image/jpeg;base64,' + ${item.imagetobase64} + ');'" >
 
-                    <img src="img/10398-1.jpg" style="max-width: 100%">
-                    <p>Tên khóa học</p>
-                    <p>Tiến độ</p>
+                            </div>
+                            <div class="course-content">
+                                <h4 th:text = "${item.courseName}"></h4>
 
-                </div>
-                <div class="col-6">
-
-                    <img src="img/10398-1.jpg" style="max-width: 100%">
-                    <p>Tên khóa học</p>
-                    <p>Tiến độ</p>
-
-                </div>
-                <div class="col-6">
-
-                    <img src="img/10398-1.jpg" style="max-width: 100%">
-                    <p>Tên khóa học</p>
-                    <p>Tiến độ</p>
-
-                </div>
-                <div class="col-6">
-                    <img src="img/10398-1.jpg" style="max-width: 100%">
-                    <p>Tên khóa học</p>
-                    <p>Tiến độ</p>
-
+                                <p th:text = "${item.shortDescription}"></p>
+                            </div>
+                            <div class="course-footer">
+                                <div class="views"><i class="fa fa-users" aria-hidden="true"></i>999</div>
+                                <div class="course-footer-price">
+                                    <span class="price-new">Miễn phí</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-4">
             <h3>Thông tin của User:</h3>
-            <form class="col-12">
+            <form class="col-12" method="post" th:action="@{'/tai-khoan/' + ${#authentication.principal.Id}}">
                 <div class="form-group">
                     Email: <span style="color: blue;"sec:authentication="name">abc@gmail.com</span>
 
@@ -109,11 +107,11 @@
                 <div class="form-group">
                     Đổi mật khẩu:
                     <input type="text" class="form-control"
-                           placeholder="Nhập mật khẩu hiện tại" id="email" name="email"><br>
+                           placeholder="Nhập mật khẩu hiện tại" id="prepassword" name="prepassword" required><br>
                     <input type="text" class="form-control"
-                           placeholder="Nhập mật khẩu mới" id="email" name="email"><br>
+                           placeholder="Nhập mật khẩu mới" id="password" name="password" required><br>
                     <input type="text" class="form-control"
-                           placeholder="Nhập mật lại khẩu mới" id="email" name="email"><br>
+                           placeholder="Nhập mật lại khẩu mới" id="confirmPassword" required name="confirmPassword"><br>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-info">Xác nhận</button>
@@ -160,6 +158,7 @@
     </div>
 </section>
 <!-- ./Footer -->
-<script src="js/common.js"> </script>
+<script th:src="@{/js/common.js}"> </script>
+<script th:src="@{/js/acount.js}"> </script>
 </body>
 </html>

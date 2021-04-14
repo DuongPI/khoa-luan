@@ -26,7 +26,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                             <a href="#" sec:authentication="principal.FullName">
                                 username </a>
                             <ul class="menu_level_2">
-                                <li class="level_2"><a href="/tai-khoan" title="">Tài Khoản</a></li>
+                                <li class="level_2"><a th:href="@{'/tai-khoan/'+${#authentication.principal.Id}}" title="">Tài Khoản</a></li>
                                 <li class="level_2"><a href="/dang-nhap?logout" title="">Đăng Xuất</a></li>
                             </ul>
                         </li>
@@ -102,7 +102,6 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                     </a>
                 </div>
             </div>
-            <button id="testapi">click</button>
             <div class="button-course">
                 <button class="btn-course"><a href="/khoa-hoc">Xem tất cả các khóa học</a></button>
             </div>    

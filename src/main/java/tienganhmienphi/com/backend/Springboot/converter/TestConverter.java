@@ -23,7 +23,6 @@ public class TestConverter {
             QuizzDTO quizzDTO = new QuizzDTO();
             quizzDTO.setQuestion(quizzEntity.getQuestion());
             quizzDTO.setId(quizzEntity.getId());
-
             List<AnswerDTO> answerDTOS = new ArrayList<>();
             for(AnswerEntity answerEntity: quizzEntity.getAnswers()){
                 AnswerDTO answerDTO = new AnswerDTO();

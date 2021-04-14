@@ -8,7 +8,7 @@ $(function(){
         console.log(form);
     });
     $('#_submit').click(function() {
-        ajaxJSON.post("/api/v1/user", form,true,
+        ajaxJSON.post("/api/v1/test/point", form,true,
             function (data) {
                 console.log(data);
                 localStorage.setItem('result',data);
@@ -32,7 +32,7 @@ function startTimer(duration, display) {
 
         if (--timer < 0) {
             timer = duration;
-            ajaxJSON.post("/api/v1/user", form,true,
+            ajaxJSON.post("/api/v1/test/point", form,true,
                 function (data) {
                     localStorage.setItem('result',data);
                     window.location.replace('/ket-qua-thi');
@@ -44,7 +44,7 @@ function startTimer(duration, display) {
 
 window.onload = function () {
     //var fiveMinutes = 60 * 5,
-    var fiveMinutes = 1 * 2,
+    var fiveMinutes = 60 * 5,
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };

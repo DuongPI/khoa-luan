@@ -6,7 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import tienganhmienphi.com.backend.Springboot.service.TestService;
 
-@Controller
+@Controller(value = "testControllerOfWeb")
 public class TestController {
     @Autowired
     private TestService testService;

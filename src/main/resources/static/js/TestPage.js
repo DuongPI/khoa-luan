@@ -1,4 +1,8 @@
 $(function(){
+    var authorize = $('#authorize').text();
+    console.log(authorize);
+    var isAdmin = authorize.indexOf('ADMIN');
+    console.log(authorize.indexOf('USER'));
     $('#th_gia').click(function() {
         localStorage.setItem('id', $(this).attr('name'));
     });
@@ -18,11 +22,10 @@ $(function(){
             success: function (data) {
                 console.log(data)
                 if(mk == data){
-
-                    window.location.replace('/kiem-tra/'+id);
-                    alert("thành công  ");
+                    if(isAdmin !==-1)
+                        window.location.replace('/quan-tri/kiem-tra/'+id);
+                    else window.location.replace('/kiem-tra/'+id);
                 }
-
                 else
                     alert("mk chưa đúng  ");
             }

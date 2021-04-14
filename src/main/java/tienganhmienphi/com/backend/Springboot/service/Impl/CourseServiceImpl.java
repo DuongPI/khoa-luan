@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import tienganhmienphi.com.backend.Springboot.converter.CourseConverter;
 import tienganhmienphi.com.backend.Springboot.dto.CourseDTO;
 import tienganhmienphi.com.backend.Springboot.entity.CourseEntity;
+import tienganhmienphi.com.backend.Springboot.entity.LearnCourse;
 import tienganhmienphi.com.backend.Springboot.repository.CourseRepository;
+import tienganhmienphi.com.backend.Springboot.repository.LearnCourseReporitory;
 import tienganhmienphi.com.backend.Springboot.service.CourseService;
 import tienganhmienphi.com.backend.Springboot.utils.CovertToString;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
@@ -28,7 +30,8 @@ public class CourseServiceImpl implements CourseService{
 	private UploadFileUtils uploadFileUtils;
 	@Autowired
 	private CovertToString coverToString;
-	
+	@Autowired
+	private LearnCourseReporitory learnCourseReporitory;
 	
 	@Override
 	public List<CourseDTO> findAll() {
@@ -97,6 +100,25 @@ public class CourseServiceImpl implements CourseService{
 			dtos.add(dto);
 		}
 		return dtos;
+	}
+
+	@Override
+	public List<CourseDTO> findByUserId(Long id) {
+		List<LearnCourse> list = learnCourseReporitory.findAllCourseByUser(id);
+		List<Long> listCourseId = new ArrayList<>();
+		List<CourseDTO> listCourse = new ArrayList<>();
+		for(LearnCourse entity:list){
+			listCourseId.add(entity.getCourseID());
+		}
+		for(Long courseId: listCourseId){
+			CourseEntity courseEntity = courseRepository.findById(courseId).get();
+			CourseDTO dto = new CourseDTO();
+			dto = courseConverter.toDto(courseEntity);
+			dto.setImagetobase64(uploadFileUtils.read("/thumbnail/"+ dto.getImageName()));
+			dto.setUrlName(coverToString.covertToStringUrl(dto.getCourseName()));
+			listCourse.add(dto);
+		}
+		return listCourse;
 	}
 
 }

@@ -8,15 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import tienganhmienphi.com.backend.Springboot.dto.CourseDTO;
 import tienganhmienphi.com.backend.Springboot.dto.UploadFileDTO;
-import tienganhmienphi.com.backend.Springboot.dto.UserDTO;
-import tienganhmienphi.com.backend.Springboot.entity.TestEntity;
-import tienganhmienphi.com.backend.Springboot.entity.UserEntity;
 import tienganhmienphi.com.backend.Springboot.repository.UserRepository;
 import tienganhmienphi.com.backend.Springboot.service.ChapterService;
 import tienganhmienphi.com.backend.Springboot.service.TestService;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
 
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -44,15 +40,5 @@ public class ApiController {
 		dto.setImageName("hello.png");
 		return dto;
 	}
-	@PostMapping("/api/v1/user")
-	public ResponseEntity<?> ApiUser(@RequestBody List<Long> list) {
-//		List<Long> list = new ArrayList<>();
-//		list.add(1l);
-//		list.add(2l);
-//		list.add(null);
-//		list.add(null);
-//		float _a =  (float)testService.CountNumberOfDuplicate(list,1l);
-		float a = (((float)testService.CountNumberOfDuplicate(list,1l))/(int)4 *1000)/100;
-		return ResponseEntity.ok(a);
-	}
+
 }

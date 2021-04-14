@@ -12,4 +12,5 @@ public interface CourseService {
 	void delete(long id);
 	CourseEntity findByName(String name);
 	List<CourseDTO> findByCategory(String category);
+	List<CourseDTO> findByUserId(Long id);
 }
