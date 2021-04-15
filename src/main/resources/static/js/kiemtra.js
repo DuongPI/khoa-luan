@@ -8,7 +8,8 @@ $(function(){
         console.log(form);
     });
     $('#_submit').click(function() {
-        ajaxJSON.post("/api/v1/test/point", form,true,
+        let id = localStorage.getItem('id');
+        ajaxJSON.post("/api/v1/test/"+id+"/point", form,true,
             function (data) {
                 console.log(data);
                 localStorage.setItem('result',data);

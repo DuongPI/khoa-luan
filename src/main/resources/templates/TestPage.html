@@ -69,6 +69,8 @@
 
 <section class="container content">
     <h3>Các bài thi hiện tại:</h3>
+    <p style="color: red;float: right">Click vào tham gia ngay trong mỗi bài thi sẽ hiển thị mật khẩu để làm bài</p>
+    <div style="clear: both"></div>
     <div class="row">
         <div class="col-12">
             <div class="element_test" th:each="item : ${tests}">
@@ -77,18 +79,18 @@
                     <p>Giám Sát phòng thi: Phạm Ích Dương</p>
                 </div>
                 <div class="float-right">
-                    <button class="btn btn-info" data-toggle="modal"
-                            data-target="#modal-check" id="th_gia" th:name = "${item.id}">Tham gia Ngay</button>
+                    <button class="btn btn-info th_gia" data-toggle="modal"
+                            data-target="#modal-check" th:name = "${item.id}">Tham gia Ngay</button>
                     <div class="modal fade modal-danger" id="modal-check"
                          style="display: none;">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">MẬT kHẨU BÀI THI</h4>
+                                    <h4 class="modal-title">MẬT kHẨU BÀI THI: "123"</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="text" class="form-control"
-                                           id="mk_test" placeholder="Mời bạn nhập mật khẩu của bài thi">
+                                    <input type="text" class="form-control mk_test"
+                                           placeholder="Mời bạn nhập mật khẩu của bài thi">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" id="button_check"

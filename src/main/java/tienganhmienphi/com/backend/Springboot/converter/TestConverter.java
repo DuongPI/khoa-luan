@@ -38,4 +38,27 @@ public class TestConverter {
         testResponse.setQuizzs(quizzDTOS);
         return testResponse;
     }
+
+    public TestEntity toEntity(TestResponse testResponse){
+        TestEntity entity = new TestEntity();
+        entity.setPassword(testResponse.getPassword());
+        entity.setTestName(testResponse.getName());
+        return entity;
+    }
+    public TestEntity toEntity(TestResponse testResponse,TestEntity entity){
+        entity.setPassword(testResponse.getPassword());
+        entity.setTestName(testResponse.getName());
+        for(int i = 0 ; i<10 ; i++){
+            entity.getQuizzs().get(i).setQuestion(testResponse.getQuizzs().get(i).getQuestion());
+            for(int j = 0 ; j<4 ; j++){
+                entity.getQuizzs().get(i).getAnswers().get(j).setContent(
+                        testResponse.getQuizzs().get(i).getAnswers().get(j).getContent());
+                entity.getQuizzs().get(i).getAnswers().get(j).setTrue(
+                        testResponse.getQuizzs().get(i).getAnswers().get(j).isIstrue()
+                );
+            }
+
+        }
+        return entity;
+    }
 }

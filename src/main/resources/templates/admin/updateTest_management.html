@@ -14,6 +14,8 @@
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet"
           th:href="@{/js/Template/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet"
+          th:href="@{/css/addtest.css}">
     <!-- Font Awesome -->
     <link rel="stylesheet"
           th:href="@{/js/Template/bower_components/font-awesome/css/font-awesome.min.css}">
@@ -222,7 +224,7 @@
                 <ul class="sidebar-menu tree" data-widget="tree">
                     <li class="header">QUẢN LÝ</li>
 
-                    <li ><a th:href="@{/quan-tri/the-loai}"> <i class="fa fa-server"></i>
+                    <li class="active"><a th:href="@{/quan-tri/the-loai}"> <i class="fa fa-server"></i>
                         <span>Thể loại</span> <span class="pull-right-container">
 
 							</span>
@@ -244,7 +246,7 @@
                     <li><a th:href="@{/quan-tri/bai-viet}"> <i class="fa fa-book"></i> <span>Bài viết</span>
 
                     </a></li>
-                    <li class="active"><a th:href="@{/quan-tri/kiem-tra}"> <i class="fa fa-university"></i> <span>Bài kiểm tra</span>
+                    <li><a th:href="@{/quan-tri/kiem-tra}"> <i class="fa fa-book"></i> <span>Bài kiểm tra</span>
 
                     </a></li>
                 </ul>
@@ -262,7 +264,7 @@
     <div class="content-wrapper" style="min-height: 618px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Quản lí thể loại</h1>
+            <h1>Quản lí bài thi</h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             </ol>
@@ -276,105 +278,65 @@
             <div class="box" data-select2-id="12">
                 <!-- /.box-header -->
                 <div class="box-header">
-                    <h3 class="box-title">Danh Sách Các Thể loại</h3>
-                    <span class="pull-right-container">
-							<button type="button" class="btn btn-danger pull-right delete"
-                                    ref="student" data-toggle="modal" data-target="#modal-delete"
-                                    disabled="disabled">
-								<i class="fa fa-trash"></i> Xóa
-							</button>
-							<button type="button" class="btn btn-warning pull-right modify"
-                                    data-toggle="modal" data-target="#modal" disabled="disabled">
-								<i class="fa fa-edit"></i> Sửa
-							</button>
-                            <a th:href="@{/quan-tri/kiem-tra/them}">
-							<button type="button" class="btn btn-success pull-right">
-								<i class="fa fa-plus"></i> Thêm
-							</button>
-                            </a>
-						</span>
+                    <h3 class="box-title">Sửa bài thi</h3>
                 </div>
-                <div class="box-body roomTable">
-                    <table id="roomTable" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên</th>
-                            <th>Mật khẩu</th>
+                <div class="box-body roomTable" id="form_Test">
+                    <!--                ------------------------------->
+                    <div class="form-group">
+                        <label >Tên bài kiểm tra:</label>
+                        <input type="text" class="form-control"
+                               id="TestName" name="TestName" th:value="${test.name}">
+                    </div>
+                    <div class="form-group">
+                        <label >Mật khẩu làm bài:</label>
+                        <input type="text" class="form-control"
+                               id="TestPassword" name="TestPassword" th:value="${test.password}">
+                    </div>
+                    <div class="form-group" id="questionoftest">
+                        <div className="form-group" style="overflow: hidden" th:each="question,index : ${test.quizzs}">
+                            <label th:text="'Câu hỏi:' + ${index.count}">Câu hỏi: 1</label>
+                            <input type="hidden" class="form-control"
+                                   th:id="'question_'+${index.count}+'_id'"
+                                   th:value="${question.id}"
+                            >
+                            <input type="text" class="form-control"
+                                   th:id="'question_'+${index.count}"
+                                   th:value="${question.question}"
+                            >
+                            <div class="Answer" style="float: left; width: 20%;margin-right: 10px;"
+                                 th:each="answer,indexs : ${question.answers}">
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="u, index : ${tests}"
-                            th:data-id="${u.id}">
-                            <td th:text="${index.count}"></td>
-                            <td th:text="${u.name}"></td>
-                            <td th:text="${u.password}"></td>
-                        </tr>
-
-
-                        </tbody>
-                    </table>
+                                <input type="hidden" class="form-control"
+                                       th:id="'answer_'+${index.count}+'_'+${indexs.count}+'_id'"
+                                       th:value="${answer.id}"
+                                >
+                                <label th:text="'Đáp Án:' + ${indexs.count}">Đáp án: 1</label>
+                                <input type="text" class="form-control"
+                                       th:id="'answer_'+${index.count}+'_'+${indexs.count}"
+                                       th:value="${answer.content}"
+                                >
+                                <label class="form-check-label">
+                                    <input type="radio"
+                                           class="form-check-input"
+                                           value=true
+                                           th:name="'answer_'+${index.count}+'_'+${indexs.count}+'_istrue'" th:checked="${answer.istrue == true}">True
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio"
+                                           class="form-check-input"
+                                           value=false
+                                           th:name="'answer_'+${index.count}+'_'+${indexs.count}+'_istrue'" th:checked="${answer.istrue == false}">False
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-infor" id="submit">Submit</button>
+                    </div>
+                    <!--                    ---------------------------------->
                 </div>
                 <!-- /.box-body -->
-            </div>
-
-            <div class="modal fade" data-backdrop="static" id="modal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"
-                                    aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4 class="modal-title">THÊM THỂ LOẠI</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Tên</label> <input property="name"
-                                                          class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label>Mật khẩu</label> <input property="password"
-                                                               class="form-control" />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default pull-left"
-                                        data-dismiss="modal">Đóng</button>
-                                <button type="button" class="btn btn-primary save">Lưu</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-            <div class="modal fade modal-danger" id="modal-delete"
-                 style="display: none;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"
-                                    aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4 class="modal-title">XÓA DỮ LIỆU THỂ LOẠI</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h4>Bạn có muốn xóa dữ liệu thể loại này?</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" id="delete-category"
-                                    class="btn btn-outline pull-left save" data-dismiss="modal">Đồng
-                                ý</button>
-                            <button type="button" class="btn btn-outline"
-                                    data-dismiss="modal">Không</button>
-                        </div>
-
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
             </div>
 
         </section>
@@ -413,6 +375,6 @@
 <script th:src="@{/js/Scripts/common/common.js}"></script>
 <script th:src="@{/js/Scripts/libraries/xlstojson/xlsx.full.min.js}"></script>
 <script th:src="@{/js/Scripts/common/testLogin.js}"></script>
-<script th:src="@{/js/Scripts/Views/Manager/test.js}"></script>
+<script th:src="@{/js/Scripts/Views/Manager/updateTest.js}"></script>
 </body>
 </html>

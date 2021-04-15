@@ -191,7 +191,7 @@ section .section-title {
 
 .ndkhoi h3 {
     position: absolute;
-    font-size: 15px;
+    font-size: 18px;
     z-index: 4;
     top: 30%;
     width: 100%;
@@ -219,9 +219,10 @@ section .section-title {
     width: 80%;
     height: auto;
     color: white;
-    font-size: 15px;
+    font-size: 14px;
     top: 45%;
     left: 10%;
+    opacity: 0.8;
     text-align: center;
 }
 .mauxam {
