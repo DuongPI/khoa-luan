@@ -5,8 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-//@Getter
-//@Setter
+@Getter
+@Setter
 @Entity
 @Table(name = "answer")
 public class AnswerEntity {
@@ -23,31 +23,4 @@ public class AnswerEntity {
     @JoinColumn(name = "quizz_id")
     private QuizzEntity quizz;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public boolean isTrue() {
-        return isTrue;
-    }
-
-    public QuizzEntity getQuizz() {
-        return quizz;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setTrue(boolean aTrue) {
-        isTrue = aTrue;
-    }
-
-    public void setQuizz(QuizzEntity quizz) {
-        this.quizz = quizz;
-    }
 }

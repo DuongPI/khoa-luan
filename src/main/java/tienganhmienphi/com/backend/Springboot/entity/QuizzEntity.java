@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Getter
-//@Setter
+@Getter
+@Setter
 @Entity
 @Table(name = "quizz")
 public class QuizzEntity {
@@ -26,31 +26,4 @@ public class QuizzEntity {
     @OneToMany(mappedBy = "quizz", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<AnswerEntity> answers = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public TestEntity getTest() {
-        return test;
-    }
-
-    public List<AnswerEntity> getAnswers() {
-        return answers;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public void setTest(TestEntity test) {
-        this.test = test;
-    }
-
-    public void setAnswers(List<AnswerEntity> answers) {
-        this.answers = answers;
-    }
 }
