@@ -24,12 +24,4 @@ public class LogInController {
 		return "Acount";
 	}
 
-	@PostMapping("/tai-khoan/{id}")
-	public String updateAcount(ModelMap model,@PathVariable("id") String id,
-							   @RequestParam("password") String password,
-							   @RequestParam("prepassword") String prepassword,
-							   @RequestParam("confirmPassword") String confirmPassword) {
-		model.addAttribute("courses", courseService.findByUserId(Long.parseLong(id)));
-		return "Acount";
-	}
 }
