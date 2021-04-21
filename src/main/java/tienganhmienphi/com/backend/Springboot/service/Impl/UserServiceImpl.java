@@ -11,10 +11,12 @@ import tienganhmienphi.com.backend.Springboot.repository.RoleRepository;
 import tienganhmienphi.com.backend.Springboot.repository.UserRepository;
 import tienganhmienphi.com.backend.Springboot.service.UserService;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;

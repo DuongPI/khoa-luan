@@ -14,7 +14,11 @@ import tienganhmienphi.com.backend.Springboot.repository.PostRepository;
 import tienganhmienphi.com.backend.Springboot.service.PostService;
 import tienganhmienphi.com.backend.Springboot.utils.CovertToString;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
+
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class PostServiceImpl implements PostService{
 	@Autowired
 	private PostRepository postRepository;

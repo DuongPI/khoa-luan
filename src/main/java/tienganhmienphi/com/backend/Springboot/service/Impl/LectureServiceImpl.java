@@ -18,6 +18,7 @@ import tienganhmienphi.com.backend.Springboot.repository.LectureRepository;
 import tienganhmienphi.com.backend.Springboot.service.LectureService;
 
 @Service
+@Transactional
 public class LectureServiceImpl implements LectureService {
 	
 	@Autowired

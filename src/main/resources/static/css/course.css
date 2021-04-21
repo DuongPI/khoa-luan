@@ -31,7 +31,7 @@ section.title-page::before {
     padding-top: 180px;
     color: white;
     position: absolute;
-    z-index: 2222;
+    z-index: 1;
 }
 form.form-inline.courses-ordering label {
     margin-left: 15px;

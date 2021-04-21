@@ -20,6 +20,7 @@ import tienganhmienphi.com.backend.Springboot.utils.CovertToString;
 import tienganhmienphi.com.backend.Springboot.utils.UploadFileUtils;
 
 @Service
+@Transactional
 public class CourseServiceImpl implements CourseService{
 
 	@Autowired

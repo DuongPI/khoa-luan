@@ -23,6 +23,7 @@ import tienganhmienphi.com.backend.Springboot.service.ChapterService;
 import tienganhmienphi.com.backend.Springboot.utils.CovertToString;
 
 @Service
+@Transactional
 public class ChapterServiceImpl implements ChapterService{
 	@Autowired
 	private ChapterRepository chapterRepository;

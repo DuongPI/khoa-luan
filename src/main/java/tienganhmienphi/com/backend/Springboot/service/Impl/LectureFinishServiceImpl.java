@@ -15,9 +15,11 @@ import tienganhmienphi.com.backend.Springboot.service.ChapterService;
 import tienganhmienphi.com.backend.Springboot.service.LectureFinishService;
 import tienganhmienphi.com.backend.Springboot.utils.CovertToString;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class LectureFinishServiceImpl implements LectureFinishService {
     @Autowired
     private LearnCourseReporitory learnCourseReporitory;

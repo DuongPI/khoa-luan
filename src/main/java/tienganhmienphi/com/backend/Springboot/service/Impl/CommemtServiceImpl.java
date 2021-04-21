@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 import tienganhmienphi.com.backend.Springboot.entity.CommentEntity;
 import tienganhmienphi.com.backend.Springboot.service.CommentService;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class CommemtServiceImpl implements CommentService{
 
 	@Override

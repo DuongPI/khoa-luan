@@ -14,7 +14,7 @@ public class TestController {
 
     @GetMapping("/quan-tri/kiem-tra/{id}")
     public String showTestHasId(ModelMap model) {
-        model.addAttribute("test", testService.findById(1));
+        //model.addAttribute("test", testService.findById(1));
         return "TestPageOfAdmin";
     }
     @GetMapping("/quan-tri/kiem-tra")

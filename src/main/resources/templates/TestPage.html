@@ -81,30 +81,7 @@
                 <div class="float-right">
                     <button class="btn btn-info th_gia" data-toggle="modal"
                             data-target="#modal-check" th:name = "${item.id}">Tham gia Ngay</button>
-                    <div class="modal fade modal-danger" id="modal-check"
-                         style="display: none;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">MẬT kHẨU BÀI THI: "123"</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <input type="text" class="form-control mk_test"
-                                           placeholder="Mời bạn nhập mật khẩu của bài thi">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" id="button_check"
-                                            class="btn btn-outline btn-info pull-left save"  >Đồng
-                                        ý</button>
-                                    <button type="button" class="btn btn-outline btn-danger"
-                                            data-dismiss="modal">Đóng</button>
-                                </div>
 
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
                 </div>
             </div>
 
@@ -113,7 +90,31 @@
     </div>
 </section>
 <!-- end content -->
+<div class="modal fade modal-danger" id="modal-check"
+     >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">MỜI BẠN NHẬP MẬT kHẨU BÀI THI: </h4>
+            </div>
+            <div class="modal-body">
+                <p>mật khẩu của bài thi này là : 123</p>
+                <input type="text" class="form-control mk_test"
+                       placeholder="Mời bạn nhập mật khẩu của bài thi">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="button_check"
+                        class="btn btn-outline btn-info pull-left save"  >Đồng
+                    ý</button>
+                <button type="button" class="btn btn-outline btn-danger"
+                        data-dismiss="modal">Đóng</button>
+            </div>
 
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 <!-- footer -->
 <section id="footer">

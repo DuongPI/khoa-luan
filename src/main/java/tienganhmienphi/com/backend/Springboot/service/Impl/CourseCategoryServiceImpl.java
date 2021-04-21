@@ -14,6 +14,7 @@ import tienganhmienphi.com.backend.Springboot.repository.CourseCategoryRepositor
 import tienganhmienphi.com.backend.Springboot.service.CourseCategoryService;
 
 @Service
+@Transactional
 public class CourseCategoryServiceImpl implements CourseCategoryService {
 
 	@Autowired

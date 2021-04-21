@@ -14,10 +14,12 @@ import tienganhmienphi.com.backend.Springboot.service.TestService;
 import tienganhmienphi.com.backend.Springboot.utils.Common;
 import tienganhmienphi.com.backend.Springboot.utils.CountTheNumberOfDuplicateElements;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class TestServiceImpl implements TestService {
     @Autowired
     private TestRepository testRepository;

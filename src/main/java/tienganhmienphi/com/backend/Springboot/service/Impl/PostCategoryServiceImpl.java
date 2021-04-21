@@ -10,7 +10,11 @@ import tienganhmienphi.com.backend.Springboot.dto.PostCategoryDTO;
 import tienganhmienphi.com.backend.Springboot.entity.PostCategoryEntity;
 import tienganhmienphi.com.backend.Springboot.repository.PostCategoryRepository;
 import tienganhmienphi.com.backend.Springboot.service.PostCategoryService;
+
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class PostCategoryServiceImpl implements PostCategoryService {
 	@Autowired
 	private PostCategoryRepository postCategoryRepository;
