@@ -6,5 +6,5 @@ import tienganhmienphi.com.backend.Springboot.dto.UserDTO;
 public interface UserService {
     public boolean insert(RegisterForm dto);
     UserDTO update(UserDTO dto);
-
+    void sendMail(String email,String name);
 }

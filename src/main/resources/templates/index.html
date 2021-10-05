@@ -177,7 +177,7 @@
 
                 <div class="col-xl-4 col-lg-4 col-md-4" th:each="item: ${posts}">
                     <div class="course-element">
-                        <a href="#">
+                        <a th:href="@{'/bai-viet/'+ ${item.urlname}}">
                             <div class="course-image"
                                  th:style="'background-image:url(data:image/jpeg;base64,' + ${item.imagetobase64} + ');'"
                             >

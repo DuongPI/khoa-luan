@@ -18,7 +18,7 @@ public class TestController {
         return "TestPage";
     }
     @GetMapping("/kiem-tra/{id}")
-    public String showTestHasId(ModelMap model,@PathVariable("id") Long id) {
+    public String showTestID(ModelMap model,@PathVariable("id") Long id) {
         model.addAttribute("test", testService.findById(id));
         return "kiemtra";
     }

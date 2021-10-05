@@ -25,6 +25,7 @@ public class TestAPI {
 
     @PostMapping("/api/v1/test/{id}/point")
     public ResponseEntity<?> point(@RequestBody List<Long> list,@PathVariable("id") Long id) {
+        System.out.println(list.toString());
         float a = (((float)testService.CountNumberOfDuplicate(list,id))/(int)10 *1000)/100;
         return ResponseEntity.ok(a);
     }

@@ -26,15 +26,16 @@ public class LectureController {
 
     @GetMapping("/learn/{courseName}/{userid}/{id}")
     public String ShowCourse(ModelMap model, @PathVariable(required = true) String courseName
-    ,@PathVariable(required = true) String id,@PathVariable(required = true) String userid){
+            , @PathVariable(required = true) String id, @PathVariable(required = true) String userid) {
         model.addAttribute("course", courseService.findByName(courseName));
         model.addAttribute("coursename", courseName);
-        model.addAttribute("chapters", chapterService._findAllByCourse(courseName,userid));
+        model.addAttribute("chapters", chapterService._findAllByCourse(courseName, userid));
         model.addAttribute("id", id);
-        model.addAttribute("progree", lectureFinishService.progree(courseName,userid));
+        model.addAttribute("progree", lectureFinishService.progree(courseName, userid));
         model.addAttribute("learns", lectureFinishService.findAll());
-        model.addAttribute("ischeck",lectureFinishService.checkId(Long.parseLong(id),Long.parseLong(userid)));
+        model.addAttribute("ischeck", lectureFinishService.checkId(Long.parseLong(id), Long.parseLong(userid)));
         model.addAttribute("lecture", lectureService.findById(Long.parseLong(id)));
         return "learn-course";
+
     }
 }

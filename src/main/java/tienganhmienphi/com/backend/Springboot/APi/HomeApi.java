@@ -33,8 +33,6 @@ public class HomeApi {
 	public CourseCategoryDTO update(@RequestBody CourseCategoryDTO courseCategoryDTO) {
 		return courseCategoryService.update(courseCategoryDTO);
 	}
-//	ResponseEntity
-//	return ResponseEntity.ok().build();
 	
 	@DeleteMapping("/api/v1/category/{id}")
 	public ResponseEntity<Void> delete(@PathVariable(required = true) String id) {

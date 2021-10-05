@@ -62,16 +62,13 @@
     </div>
 </section>
 <div class="container" style="margin: 100px auto">
+    <div th:if="${alert != '' && alert == 'true'}" class="alert alert-success">Mật khẩu đã được thay đổi thành công</div>
+    <div th:if="${alert != '' && alert == 'false'}" class="alert alert-danger">Thay đổi mật khẩu không thành công. Thông tin mật khẩu chưa đúng</div>
     <h2>Xin chào: <span style="color: red;" sec:authentication="principal.FullName">User</span> </h2>
     <div class="row">
         <div class="col-8">
             <h3>Các khóa học bạn đang tham gia.</h3>
             <div class="row">
-                <!--<div class="col-6" th:each="item : ${courses}">
-                    <img th:src="'data:image/png;base64,'+${item.imagetobase64}" style="max-width: 100%">
-                    <p th:text="${item.courseName}">Tên khóa học</p>
-                    <p th:text="${item.shortDescription}"></p>
-                </div>-->
                 <div class="col-6" th:each = "item:${courses}">
                     <div class="course-element">
                         <a th:href="@{'/khoa-hoc/'+${item.urlName}}">
@@ -106,11 +103,11 @@
                 </div>
                 <div class="form-group">
                     Đổi mật khẩu:
-                    <input type="text" class="form-control"
-                           placeholder="Nhập mật khẩu hiện tại" id="prepassword" name="prepassword" required><br>
-                    <input type="text" class="form-control"
-                           placeholder="Nhập mật khẩu mới" id="password" name="password" required><br>
-                    <input type="text" class="form-control"
+                    <input type="password" class="form-control" style="padding: 23px 10px; margin-top: 20px;"
+                           placeholder="Nhập mật khẩu hiện tại" id="password" name="password" required><br>
+                    <input type="password" class="form-control" style="padding: 23px 10px;"
+                           placeholder="Nhập mật khẩu mới" id="prepassword" name="prepassword" required><br>
+                    <input type="password" class="form-control" style="padding: 23px 10px;"
                            placeholder="Nhập mật lại khẩu mới" id="confirmPassword" required name="confirmPassword"><br>
                 </div>
                 <div class="form-group">

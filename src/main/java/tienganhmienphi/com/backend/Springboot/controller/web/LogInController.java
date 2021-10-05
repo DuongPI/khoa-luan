@@ -21,6 +21,8 @@ public class LogInController {
 	@GetMapping("/tai-khoan/{id}")
 	public String ShowAcount(ModelMap model, @PathVariable("id") String id) {
 		model.addAttribute("courses", courseService.findByUserId(Long.parseLong(id)));
+		model.addAttribute("alert", "");
+
 		return "Acount";
 	}
 

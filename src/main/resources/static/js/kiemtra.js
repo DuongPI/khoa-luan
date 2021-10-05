@@ -1,4 +1,4 @@
-var form = [-1,-1,-1,-1];
+var form = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
 $(function(){
     $('input').change(function() {
         console.log($(this).val());
@@ -9,6 +9,7 @@ $(function(){
     });
     $('#_submit').click(function() {
         let id = localStorage.getItem('id');
+        console.log(form);
         ajaxJSON.post("/api/v1/test/"+id+"/point", form,true,
             function (data) {
                 console.log(data);

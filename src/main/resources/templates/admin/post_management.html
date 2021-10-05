@@ -301,7 +301,7 @@
 									<th>STT</th>
 									<th>Tên</th>
 									<th>Mô tả</th>
-									<th>Content</th>
+
 									<th>Thể loại</th>
 									<th>Ảnh</th>
 
@@ -314,7 +314,7 @@
 									<td th:text="${u.name}"></td>
 									<td th:text="${u.shortDecripsion}"></td>
 									<td  style = "display:none" th:each="category, index: ${categories}" th:if= "${u.category} == ${category.id}"  th:text="${category.id}"></td>
-									<td id="_content" th:text="${u.content}"></td>
+									<td id="_content" th:text="${u.content}" style="display: none"></td>
 									<td th:each="category, index: ${categories}" th:if= "${u.category} == ${category.id}"  th:text="${category.name}"></td>
 									<td th:text = "${u.image}"></td>
 								</tr>

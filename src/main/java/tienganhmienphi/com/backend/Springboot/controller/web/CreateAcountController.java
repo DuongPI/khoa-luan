@@ -26,9 +26,10 @@ public class CreateAcountController {
 		if (bindingResult.hasErrors()) {
 			return "Create-Acount";
 		}
-		System.out.println(form.getUsername() + "" + form.getEmail());
-		if(userService.insert(form))
+		if(userService.insert(form)) {
+			//userService.sendMail(form.getEmail(), form.getUsername());
 			return "redirect:/";
+		}
 		else return "redirect:/dang-ky?error";
 	}
 }
